@@ -28,7 +28,7 @@ JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
 JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -o indent=2,doxygen,unparenthesized-return=0
-SMF_MANIFESTS_IN = smf/manifests/bapi.xml.in
+SMF_MANIFESTS_IN = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
 
 include ./tools/mk/Makefile.defs
 include ./tools/mk/Makefile.node.defs
