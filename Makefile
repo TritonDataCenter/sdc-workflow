@@ -18,6 +18,12 @@
 # Tools
 #
 TAP		:= ./node_modules/.bin/tap
+TAR = tar
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), SunOS)
+	TAR = gtar
+endif
 
 #
 # Files
@@ -44,9 +50,49 @@ all: $(SMF_MANIFESTS) | $(TAP)
 $(TAP): | $(NPM_EXEC)
 	$(NPM) install
 
+CLEAN_FILES += $(TAP) ./node_modules/tap
+
 .PHONY: test
 test: $(TAP)
 	TAP=1 $(TAP) test/*.test.js
+
+RELEASE_TARBALL         := workflow-pkg-$(STAMP).tar.bz2
+TMPDIR                  := /tmp/$(STAMP)
+
+.PHONY: release
+release: check build docs
+	@echo "Building $(RELEASE_TARBALL)"
+	@mkdir -p $(TMPDIR)/root/opt/smartdc/wf
+	@mkdir -p $(TMPDIR)/site
+	@touch $(TMPDIR)/site/.do-not-delete-me
+	@mkdir -p $(TMPDIR)/root
+	@mkdir -p $(tmpdir)/root/opt/smartdc/wf/ssl
+	cp -r	$(ROOT)/build/docs \
+		$(ROOT)/build/node \
+		$(ROOT)/etc \
+		$(ROOT)/lib \
+		$(ROOT)/wf-api.js \
+		$(ROOT)/wf-runner.js \
+		$(ROOT)/node_modules \
+		$(ROOT)/package.json \
+		$(ROOT)/npm-shrinkwrap.json \
+		$(ROOT)/smf \
+		$(ROOT)/tools \
+		$(TMPDIR)/root/opt/smartdc/wf/
+	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
+	@rm -rf $(TMPDIR)
+
+
+.PHONY: publish
+publish: release
+	@if [[ -z "$(BITS_DIR)" ]]; then \
+	  echo "error: 'BITS_DIR' must be set for 'publish' target"; \
+	  exit 1; \
+	fi
+	mkdir -p $(BITS_DIR)/workflow
+	cp $(ROOT)/$(RELEASE_TARBALL) $(BITS_DIR)/workflow/$(RELEASE_TARBALL)
+
+
 
 include ./tools/mk/Makefile.deps
 include ./tools/mk/Makefile.node.targ

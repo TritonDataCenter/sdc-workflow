@@ -1,0 +1,27 @@
+{
+  "backend": {
+    "module": "wf-pg-backend",
+    "opts": {
+      "port": WF_PG_PORT,
+      "host": WF_PG_HOST,
+      "database": "node_workflow",
+      "user": WF_PG_USER,
+      "password": WF_PG_PASSWORD,
+      "test": false
+    }
+  },
+  "api": {
+    "port": 8080
+  },
+  "runner": {
+    "identifier": WF_RUNNER_UUID,
+    "forks": 2,
+    "run_interval": 6,
+    "sandbox": {
+      "http": "http",
+      "uuid": "node-uuid",
+      "restify": "restify"
+    }
+  }
+}
+
