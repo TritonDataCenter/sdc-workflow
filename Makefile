@@ -28,7 +28,7 @@ endif
 #
 # Files
 #
-DOC_FILES	 = index.restdown boilerplateapi.restdown
+DOC_FILES	 = index.restdown
 JS_FILES	:= $(shell ls *.js) $(shell find lib test -name '*.js')
 JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
@@ -56,6 +56,7 @@ CLEAN_FILES += $(TAP) ./node_modules/tap
 test: $(TAP)
 	TAP=1 $(TAP) test/*.test.js
 
+ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := workflow-pkg-$(STAMP).tar.bz2
 TMPDIR                  := /tmp/$(STAMP)
 
