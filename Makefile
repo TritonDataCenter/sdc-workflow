@@ -61,7 +61,7 @@ RELEASE_TARBALL         := workflow-pkg-$(STAMP).tar.bz2
 TMPDIR                  := /tmp/$(STAMP)
 
 .PHONY: release
-release: check build docs
+release: build docs
 	@echo "Building $(RELEASE_TARBALL)"
 	@mkdir -p $(TMPDIR)/root/opt/smartdc/wf
 	@mkdir -p $(TMPDIR)/site
