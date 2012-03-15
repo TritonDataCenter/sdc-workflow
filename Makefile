@@ -56,19 +56,35 @@ CLEAN_FILES += $(TAP) ./node_modules/tap
 test: $(TAP)
 	TAP=1 $(TAP) test/*.test.js
 
+
+include ./tools/mk/Makefile.deps
+include ./tools/mk/Makefile.node.targ
+include ./tools/mk/Makefile.smf.targ
+include ./tools/mk/Makefile.targ
+
 ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := workflow-pkg-$(STAMP).tar.bz2
 TMPDIR                  := /tmp/$(STAMP)
 
+.PHONY: pkg
+pkg: release
+
+.PHONY: node
+node: $(NODE_EXEC) $(NPM_EXEC) $(NODE_WAF_EXEC)
+
+.PHONY: setup
+setup: node
+	$(NPM) install
+
 .PHONY: release
-release: build docs
+release: setup deps docs
 	@echo "Building $(RELEASE_TARBALL)"
 	@mkdir -p $(TMPDIR)/root/opt/smartdc/wf
 	@mkdir -p $(TMPDIR)/site
 	@touch $(TMPDIR)/site/.do-not-delete-me
 	@mkdir -p $(TMPDIR)/root
 	@mkdir -p $(tmpdir)/root/opt/smartdc/wf/ssl
-	cp -r	$(ROOT)/build/docs \
+	cp -r   $(ROOT)/build/docs \
 		$(ROOT)/build/node \
 		$(ROOT)/etc \
 		$(ROOT)/lib \
@@ -87,15 +103,11 @@ release: build docs
 .PHONY: publish
 publish: release
 	@if [[ -z "$(BITS_DIR)" ]]; then \
-	  echo "error: 'BITS_DIR' must be set for 'publish' target"; \
-	  exit 1; \
+		echo "error: 'BITS_DIR' must be set for 'publish' target"; \
+		exit 1; \
 	fi
 	mkdir -p $(BITS_DIR)/workflow
 	cp $(ROOT)/$(RELEASE_TARBALL) $(BITS_DIR)/workflow/$(RELEASE_TARBALL)
 
-
-
-include ./tools/mk/Makefile.deps
-include ./tools/mk/Makefile.node.targ
-include ./tools/mk/Makefile.smf.targ
-include ./tools/mk/Makefile.targ
+.PHONY: pkg
+pkg: release
