@@ -84,12 +84,12 @@ release: setup deps docs
 	@touch $(TMPDIR)/site/.do-not-delete-me
 	@mkdir -p $(TMPDIR)/root
 	@mkdir -p $(tmpdir)/root/opt/smartdc/wf/ssl
-	cp -r   $(ROOT)/build/docs \
-		$(ROOT)/build/node \
+	cp -r   $(ROOT)/build \
 		$(ROOT)/etc \
 		$(ROOT)/lib \
 		$(ROOT)/wf-api.js \
 		$(ROOT)/wf-runner.js \
+		$(ROOT)/Makefile \
 		$(ROOT)/node_modules \
 		$(ROOT)/package.json \
 		$(ROOT)/npm-shrinkwrap.json \
