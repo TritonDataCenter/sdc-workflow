@@ -66,9 +66,6 @@ ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := workflow-pkg-$(STAMP).tar.bz2
 TMPDIR                  := /tmp/$(STAMP)
 
-.PHONY: pkg
-pkg: release
-
 .PHONY: node
 node: $(NODE_EXEC) $(NPM_EXEC) $(NODE_WAF_EXEC)
 
@@ -77,7 +74,7 @@ setup: node
 	$(NPM) install
 
 .PHONY: release
-release: setup deps docs
+release: setup deps docs $(SMF_MANIFESTS)
 	@echo "Building $(RELEASE_TARBALL)"
 	@mkdir -p $(TMPDIR)/root/opt/smartdc/wf
 	@mkdir -p $(TMPDIR)/site
