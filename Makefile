@@ -66,21 +66,18 @@ ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := workflow-pkg-$(STAMP).tar.bz2
 TMPDIR                  := /tmp/$(STAMP)
 
-.PHONY: node
-node: $(NODE_EXEC) $(NPM_EXEC) $(NODE_WAF_EXEC)
-
 .PHONY: setup
-setup: node
+setup: | $(NPM_EXEC)
 	$(NPM) install
 
 .PHONY: release
 release: setup deps docs $(SMF_MANIFESTS)
 	@echo "Building $(RELEASE_TARBALL)"
-	@mkdir -p $(TMPDIR)/root/opt/smartdc/wf
+	@mkdir -p $(TMPDIR)/root/opt/smartdc/workflow
 	@mkdir -p $(TMPDIR)/site
 	@touch $(TMPDIR)/site/.do-not-delete-me
 	@mkdir -p $(TMPDIR)/root
-	@mkdir -p $(tmpdir)/root/opt/smartdc/wf/ssl
+	@mkdir -p $(tmpdir)/root/opt/smartdc/workflow/ssl
 	cp -r   $(ROOT)/build \
 		$(ROOT)/etc \
 		$(ROOT)/lib \
@@ -92,7 +89,7 @@ release: setup deps docs $(SMF_MANIFESTS)
 		$(ROOT)/npm-shrinkwrap.json \
 		$(ROOT)/smf \
 		$(ROOT)/tools \
-		$(TMPDIR)/root/opt/smartdc/wf/
+		$(TMPDIR)/root/opt/smartdc/workflow/
 	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
 	@rm -rf $(TMPDIR)
 
@@ -105,6 +102,3 @@ publish: release
 	fi
 	mkdir -p $(BITS_DIR)/workflow
 	cp $(ROOT)/$(RELEASE_TARBALL) $(BITS_DIR)/workflow/$(RELEASE_TARBALL)
-
-.PHONY: pkg
-pkg: release
