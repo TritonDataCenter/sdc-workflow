@@ -83,12 +83,10 @@ release: setup deps docs $(SMF_MANIFESTS)
 		$(ROOT)/lib \
 		$(ROOT)/wf-api.js \
 		$(ROOT)/wf-runner.js \
-		$(ROOT)/Makefile \
 		$(ROOT)/node_modules \
 		$(ROOT)/package.json \
 		$(ROOT)/npm-shrinkwrap.json \
 		$(ROOT)/smf \
-		$(ROOT)/tools \
 		$(TMPDIR)/root/opt/smartdc/workflow/
 	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
 	@rm -rf $(TMPDIR)
