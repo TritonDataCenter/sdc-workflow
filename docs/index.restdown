@@ -24,3 +24,18 @@ Those are publicly available at github. See
 - Docs: [https://head.no.de/docs/workflow](https://head.no.de/docs/workflow)
 - Tickets/bugs: [https://devhub.joyent.com/jira/browse/WORKFLOW](https://devhub.joyent.com/jira/browse/WORKFLOW)
 
+## Adding a Node Module to Workflow's Sandbox
+
+In order to make a new node module available to the Workflow's sandbox used by
+the different workflow tasks, you first have to add that module to project's
+`package.json` dependencies section.
+
+Once you've added there, you need to regenerate the npm-shrinkwrap.json file.
+Easier way is to just remove the current one, `rm -Rf node_modules` and run
+make all again. Once all the modules have been installed, you need to run
+`npm shrinkwrap` and the file will be regenerated with the lastest version of
+the required modules.
+
+Finally, in order to make your module available for the workflow tasks, you
+need to add it to `etc/config.json.in` which is the file used to generate the
+configuration file for a SDC setup.

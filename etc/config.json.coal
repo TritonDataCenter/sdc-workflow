@@ -20,7 +20,8 @@
     "sandbox": {
       "http": "http",
       "uuid": "node-uuid",
-      "restify": "restify"
+      "restify": "restify",
+      "sdc-clients": "sdc-clients"
     }
   }
 }
