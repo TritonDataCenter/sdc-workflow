@@ -3,20 +3,25 @@
     "module": "wf-pg-backend",
     "opts": {
       "port": WF_PG_PORT,
-      "host": WF_PG_HOST,
+      "host": "WF_PG_HOST",
       "database": "node_workflow",
-      "user": WF_PG_USER,
-      "password": WF_PG_PASSWORD,
+      "user": "WF_PG_USER",
+      "password": "WF_PG_PASSWORD",
       "test": false
     }
   },
   "api": {
-    "port": 8080
+    "port": 8080,
+    "cert": "/opt/smartdc/workflow/ssl/cert.pem",
+    "key": "/opt/smartdc/workflow/ssl/key.pem",
+    "user": "HTTP_ADMIN_USER",
+    "password": "HTTP_ADMIN_PW"
+
   },
   "runner": {
-    "identifier": WF_RUNNER_UUID,
-    "forks": 2,
-    "run_interval": 6,
+    "identifier": "WF_RUNNER_UUID",
+    "forks": WF_NUM_FORKS,
+    "run_interval": WF_RUN_INTERVAL,
     "sandbox": {
       "http": "http",
       "uuid": "node-uuid",
