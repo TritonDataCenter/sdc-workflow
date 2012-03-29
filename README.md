@@ -15,31 +15,45 @@ build and setup workflow zones either into SDC Headnode or Compute Nodes.
 
 # Repository
 
-    deps/           Git submodules and/or commited 3rd-party deps should go
-                    here. See "node_modules/" for node.js deps.
-    docs/           Project docs (restdown)
-    lib/            Source files.
-    node_modules/   Node.js deps, either populated at build time or commited.
-                    See Managing Dependencies.
-    pkg/            Package lifecycle scripts
-    smf/manifests   SMF manifests
-    smf/methods     SMF method scripts
-    test/           Test suite (using node-tap)
-    tools/          Miscellaneous dev/upgrade/deployment tools and data.
+    deps/               Git submodules and/or commited 3rd-party deps should go
+                        here. See "node_modules/" for node.js deps.
+    docs/               Project docs (restdown)
+    lib/                Source files.
+    node_modules/       Node.js deps populated at build time.
+                        See npm shrinkwrap.
+    pkg/                Package lifecycle scripts
+    smf/manifests       SMF manifests
+    smf/methods         SMF method scripts
+    test/               Test suite (using node-tap)
+    tools/              Miscellaneous dev/upgrade/deployment tools and data.
     Makefile
-    package.json    npm module info (holds the project version)
+    package.json        npm module info (holds the project version)
+    npm-shrinkwrap.json shrinkwrapped npm dependencies
     README.md
 
 
 # Development
 
-To run the boilerplate API server:
+Checkout the repo and init submodules:
 
     git clone git@git.joyent.com:workflow.git
     cd workflow
     git submodule update --init
     make all
-    node server.js
+
+Copy configuration at `etc/config.json.coal` to `etc/config.json` and edit
+properly to match your PostgreSQL settings. Remember that you need to create
+a PostgreSQL database called `node_workflow`, this app will not create it.
+
+Run a Workflow runner:
+
+    node wf-runner.js
+
+To run the Workflow API server:
+
+    node wf-api.js
+
+Note that this project uses npm shrinkwrap to install NPM modules.
 
 To update the documentation, edit "docs/index.restdown" and run `make docs`
 to update "docs/index.html".

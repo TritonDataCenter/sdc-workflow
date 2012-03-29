@@ -24,7 +24,7 @@ Those are publicly available at github. See
 - Docs: [https://head.no.de/docs/workflow](https://head.no.de/docs/workflow)
 - Tickets/bugs: [https://devhub.joyent.com/jira/browse/WORKFLOW](https://devhub.joyent.com/jira/browse/WORKFLOW)
 
-## Adding a Node Module to Workflow's Sandbox
+## Adding a Node Module to Workflow's Sandbox
 
 In order to make a new node module available to the Workflow's sandbox used by
 the different workflow tasks, you first have to add that module to project's
