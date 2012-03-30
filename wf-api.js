@@ -3,10 +3,13 @@
 var path = require('path'),
     fs = require('fs'),
     util = require('util'),
+    http = require('http'),
+    https = require('https'),
     wf = require('wf'),
     config_file = path.resolve(__dirname, 'etc/config.json'),
     config,
-    api;
+    api,
+    log;
 
 
 
@@ -24,9 +27,31 @@ fs.readFile(config_file, 'utf8', function (err, data) {
       process.exit(1);
     }
 
+    if (typeof (config.maxHttpSockets) === 'number') {
+      console.log('Tuning max sockets to %d', config.maxHttpSockets);
+      http.globalAgent.maxSockets = config.maxHttpSockets;
+      https.globalAgent.maxSockets = config.maxHttpSockets;
+    }
+
     api = wf.API(config);
+    log = api.log;
+
     api.init(function () {
-      console.log('API server up and running!');
+      log.info('API server up and running!');
+    });
+
+    // Setup a logger on HTTP Agent queueing
+    setInterval(function () {
+      var agent = http.globalAgent;
+      if (agent.requests && agent.requests.length > 0) {
+        log.warn('http.globalAgent queueing, depth=%d',
+                 agent.requests.length);
+        }
+      agent = https.globalAgent;
+      if (agent.requests && agent.requests.length > 0) {
+        log.warn('https.globalAgent queueing, depth=%d',
+                 agent.requests.length);
+        }
     });
 
   }

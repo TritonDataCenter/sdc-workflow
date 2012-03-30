@@ -16,8 +16,8 @@
     "key": "/opt/smartdc/workflow/ssl/key.pem",
     "user": "HTTP_ADMIN_USER",
     "password": "HTTP_ADMIN_PW"
-
   },
+  "maxHttpSockets": 100,
   "runner": {
     "identifier": "WF_RUNNER_UUID",
     "forks": WF_NUM_FORKS,
