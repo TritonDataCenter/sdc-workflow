@@ -33,6 +33,13 @@ fs.readFile(config_file, 'utf8', function (err, data) {
       https.globalAgent.maxSockets = config.maxHttpSockets;
     }
 
+    config.logger = {
+      streams: [ {
+        level: 'debug',
+        stream: process.stdout
+      }]
+    };
+
     api = wf.API(config);
     log = api.log;
 
