@@ -11,7 +11,7 @@
     }
   },
   "api": {
-    "port": 8080,
+    "port": 80,
     "cert": "/opt/smartdc/workflow/ssl/cert.pem",
     "key": "/opt/smartdc/workflow/ssl/key.pem",
     "user": "HTTP_ADMIN_USER",
