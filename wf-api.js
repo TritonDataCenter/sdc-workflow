@@ -7,6 +7,9 @@ var path = require('path'),
     https = require('https'),
     wf = require('wf'),
     config_file = path.resolve(__dirname, 'etc/config.json'),
+    Logger = require('bunyan'),
+    levels = [Logger.TRACE, Logger.DEBUG, Logger.INFO,
+              Logger.WARN, Logger.ERROR, Logger.FATAL],
     config,
     api,
     log;
@@ -61,6 +64,31 @@ fs.readFile(config_file, 'utf8', function (err, data) {
         }
     });
 
+    process.on('SIGUSR1', function () {
+      var pos = levels.indexOf(api.log._level);
+
+      console.log('Got SIGUSR1. Attempting to decrease log level');
+
+      if (pos === (levels.length + 1)) {
+        console.log('Log level already set to the minimun. Doing nothing');
+      } else {
+        api.log.level(levels[pos + 1]);
+        console.log('Log level set to ' + levels[pos + 1]);
+      }
+    });
+
+    process.on('SIGUSR2', function () {
+      var pos = levels.indexOf(api.log._level);
+
+      console.log('Got SIGUSR2. Attempting to increase log level');
+
+      if (pos === 0) {
+        console.log('Log level already set to the maximun. Doing nothing');
+      } else {
+        api.log.level(levels[pos - 1]);
+        console.log('Log level set to ' + levels[pos - 1]);
+      }
+    });
   }
 });
 

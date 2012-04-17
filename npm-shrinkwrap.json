@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "wf": {
-      "version": "0.2.3",
+      "version": "0.2.6",
       "dependencies": {
         "async": {
           "version": "0.1.18"
@@ -11,7 +11,7 @@
       }
     },
     "wf-pg-backend": {
-      "version": "0.2.7",
+      "version": "0.2.9",
       "dependencies": {
         "pg": {
           "version": "0.6.17",
