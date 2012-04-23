@@ -101,6 +101,13 @@ fs.readFile(config_file, 'utf8', function (err, data) {
       [runner.log, runner.backend.log].forEach(increaseLevel);
     });
 
+    process.on('SIGTERM', function () {
+      console.log('Got SIGTERM. Waiting for child processes to finish');
+      runner.quit(function () {
+        console.log('All child processes finished. Exiting now.');
+        process.exit(0);
+      });
+    });
   }
 });
 
