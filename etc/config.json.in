@@ -1,13 +1,8 @@
 {
   "backend": {
-    "module": "wf-pg-backend",
+    "module": "wf-moray-backend",
     "opts": {
-      "port": WF_PG_PORT,
-      "host": "WF_PG_HOST",
-      "database": "node_workflow",
-      "user": "WF_PG_USER",
-      "password": "WF_PG_PASSWORD",
-      "test": false
+      "url": WF_MORAY_URL
     }
   },
   "api": {

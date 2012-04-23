@@ -1,13 +1,8 @@
 {
   "backend": {
-    "module": "wf-pg-backend",
+    "module": "wf-moray-backend",
     "opts": {
-      "port": 5432,
-      "host": "localhost",
-      "database": "node_workflow",
-      "user": "postgres",
-      "password": "postgres",
-      "test": false
+      "url": "http://127.0.0.1:8080"
     }
   },
   "api": {

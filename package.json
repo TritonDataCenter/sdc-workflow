@@ -6,7 +6,7 @@
   "private": true,
   "dependencies": {
     "wf": "0.2.9",
-    "wf-pg-backend": "0.2.9",
+    "wf-moray-backend": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git",
     "bunyan": "0.6.8",
     "restify": "1.4.0",
     "node-uuid": "1.3.3",

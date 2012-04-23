@@ -10,16 +10,13 @@
         }
       }
     },
-    "wf-pg-backend": {
-      "version": "0.2.9",
+    "wf-moray-backend": {
+      "version": "0.2.8",
+      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git",
       "dependencies": {
-        "pg": {
-          "version": "0.6.17",
-          "dependencies": {
-            "generic-pool": {
-              "version": "1.0.9"
-            }
-          }
+        "moray-client": {
+          "version": "1.0.0",
+          "from": "git+ssh://git@git.joyent.com:moray-client.git#ab027bbb740e6713252c6a5ba730181a3e61296a"
         },
         "async": {
           "version": "0.1.18"
