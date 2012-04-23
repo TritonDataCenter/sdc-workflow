@@ -2,7 +2,7 @@
   "backend": {
     "module": "wf-moray-backend",
     "opts": {
-      "url": WF_MORAY_URL
+      "url": "WF_MORAY_URL"
     }
   },
   "api": {
