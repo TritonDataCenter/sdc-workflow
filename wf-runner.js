@@ -82,7 +82,8 @@ fs.readFile(config_file, 'utf8', function (err, data) {
           console.log('Log level set to ' + levels[pos + 1]);
         }
       }
-      [runner.log, runner.backend.log].forEach(decreaseLevel);
+      [runner.log, runner.backend.log,
+        runner.backend.client.client.log].forEach(decreaseLevel);
     });
 
     process.on('SIGUSR2', function () {
@@ -98,7 +99,8 @@ fs.readFile(config_file, 'utf8', function (err, data) {
           console.log('Log level set to ' + levels[pos - 1]);
         }
       }
-      [runner.log, runner.backend.log].forEach(increaseLevel);
+      [runner.log, runner.backend.log,
+        runner.backend.client.client.log].forEach(increaseLevel);
     });
 
     process.on('SIGTERM', function () {
