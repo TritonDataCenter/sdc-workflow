@@ -83,6 +83,7 @@ release: setup deps docs $(SMF_MANIFESTS)
 		$(ROOT)/lib \
 		$(ROOT)/wf-api.js \
 		$(ROOT)/wf-runner.js \
+		$(ROOT)/wf-console.js \
 		$(ROOT)/node_modules \
 		$(ROOT)/package.json \
 		$(ROOT)/npm-shrinkwrap.json \

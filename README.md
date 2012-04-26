@@ -61,24 +61,58 @@ to update "docs/index.html".
 Before commiting/pushing run `make prepush` and, if possible, get a code
 review.
 
-# Testing
+# Logging and log level changes
 
-    make test
+Both, `wf-api` and `wf-runner` use Bunyan for logging. By default, both
+processes are logging to the default SMF stdout file.
 
-If you project has setup steps necessary for testing, then describe those
-here.
+To know the exact file each service is logging to:
 
+    svcs -L wf-api
+    svcs -L wf-runner
 
+If you want to see the Bunyan output pretty printed to stdout:
 
-# Other Sections Here
+    cd /opt/smartdc/workflow
+    tail -f `svcs -L wf-api` | ./node_modules/.bin/bunyan
+    tail -f `svcs -L wf-runner` | ./node_modules/.bin/bunyan
 
-Add other sections to your README as necessary. E.g. Running a demo, adding
-development data.
+By default, both services log level is `INFO`. This can be easily increased /
+decreased by sending the processes SIGUSR2/SIGUSR1 signals.
 
+In order to get the process number of the services:
 
+    svcs -p wf-api
+    svcs -p wf-runner
 
-# TODO
+Then, you can change log levels using the previous process PID:
 
-Remaining work for this repo:
+    kill -s SIGUSR2 <PID>
+    kill -s SIGUSR1 <PID>
 
+# Inspecting moray backend from the command line
 
+Besides the default services, an additional `wf-console.js` script is provided,
+which can be initialized and used to directly talk to the moray backend the same
+way wf-moray-backend module does.
+
+This script will start a REPL session using an unix socket. In order to
+initialize the REPL session:
+
+    cd /opt/smartdc/workflow
+    ./build/node/bin/node wf-console.js &
+
+The unix socket will be then available at `/tmp/node-repl.sock`. You can connect
+to the socket using:
+
+    nc -U /tmp/node-repl.sock
+
+Available objects on the REPL session, apart of the default node globals are:
+
+- `backend`: Moray workflow backend. Check `node_modules/wf-moray-backend` for the details on the available methods to manipulate workflows and jobs.
+- `log`: Bunyan logger instance used to initialize the backend.
+- `config`: Configuration file used to initialize the backend (JSON object).
+- `wf`: Object which can provide access to any of the `wf` module defined objects.
+
+Additionally, `backend` provides access to `moray-client` at `backend.client`, so you
+can directly talk REST to `moray`. Look at `moray-client` module setup above `wf-moray-backend`.
