@@ -11,7 +11,6 @@ var net = require('net'),
     levels = [Logger.TRACE, Logger.DEBUG, Logger.INFO,
               Logger.WARN, Logger.ERROR, Logger.FATAL],
     config,
-    log,
     connections = 0;
 
 fs.readFile(config_file, 'utf8', function (err, data) {
