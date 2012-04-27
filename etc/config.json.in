@@ -13,6 +13,7 @@
     "password": "HTTP_ADMIN_PW"
   },
   "maxHttpSockets": 100,
+  "logLevel": "info",
   "runner": {
     "identifier": "WF_RUNNER_UUID",
     "forks": WF_NUM_FORKS,

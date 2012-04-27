@@ -36,7 +36,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
     config.logger = {
       name: 'wf-console',
       streams: [ {
-        level: 'info',
+        level: config.logLevel || 'info',
         stream: process.stdout
       }]
     };
