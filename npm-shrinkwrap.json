@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "wf": {
-      "version": "0.2.10",
+      "version": "0.2.11",
       "dependencies": {
         "async": {
           "version": "0.1.18"
@@ -11,12 +11,17 @@
       }
     },
     "wf-moray-backend": {
-      "version": "0.2.8",
+      "version": "0.2.10",
       "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git",
       "dependencies": {
         "moray-client": {
           "version": "1.0.0",
-          "from": "git+ssh://git@git.joyent.com:moray-client.git#ab027bbb740e6713252c6a5ba730181a3e61296a"
+          "from": "git+ssh://git@git.joyent.com:moray-client.git#20c244c833addfc38782959fcf5fe4e9462c6dab",
+          "dependencies": {
+            "pooling": {
+              "version": "0.1.0"
+            }
+          }
         },
         "async": {
           "version": "0.1.18"
@@ -27,7 +32,7 @@
       "version": "0.6.8"
     },
     "restify": {
-      "version": "1.4.0",
+      "version": "1.4.1",
       "dependencies": {
         "async": {
           "version": "0.1.18"
