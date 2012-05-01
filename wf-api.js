@@ -95,7 +95,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
         }
       }
       [api.log, api.server.log, api.backend.log,
-        api.backend.client.client.log].forEach(increaseLevel);
+        api.backend.client.pool.log].forEach(increaseLevel);
     });
   }
 });

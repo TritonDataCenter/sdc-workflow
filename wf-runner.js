@@ -100,7 +100,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
         }
       }
       [runner.log, runner.backend.log,
-        runner.backend.client.client.log].forEach(increaseLevel);
+        runner.backend.client.pool.log].forEach(increaseLevel);
     });
 
     process.on('SIGTERM', function () {
