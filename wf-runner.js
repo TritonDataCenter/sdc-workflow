@@ -12,7 +12,8 @@ var path = require('path'),
               Logger.WARN, Logger.ERROR, Logger.FATAL],
     config,
     runner,
-    log;
+    log,
+    agentIntervalId;
 
 
 fs.readFile(config_file, 'utf8', function (err, data) {
@@ -55,7 +56,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
       log.info('Workflow Runner up!');
 
       // Setup a logger on HTTP Agent queueing
-      setInterval(function () {
+      agentIntervalId = setInterval(function () {
         var agent = http.globalAgent;
         if (agent.requests && agent.requests.length > 0) {
           log.warn('http.globalAgent queueing, depth=%d',
@@ -106,6 +107,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
     process.on('SIGTERM', function () {
       console.log('Got SIGTERM. Waiting for child processes to finish');
       runner.quit(function () {
+        clearInterval(agentIntervalId);
         console.log('All child processes finished. Exiting now.');
         process.exit(0);
       });

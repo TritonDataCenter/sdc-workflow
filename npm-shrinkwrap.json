@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "wf": {
-      "version": "0.2.12",
+      "version": "0.2.13",
       "dependencies": {
         "async": {
           "version": "0.1.18"
