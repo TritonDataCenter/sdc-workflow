@@ -104,8 +104,8 @@ fs.readFile(config_file, 'utf8', function (err, data) {
         runner.backend.client.pool.log].forEach(increaseLevel);
     });
 
-    process.on('SIGTERM', function () {
-      console.log('Got SIGTERM. Waiting for child processes to finish');
+    process.on('SIGINT', function () {
+      console.log('Got SIGINT. Waiting for child processes to finish');
       runner.quit(function () {
         clearInterval(agentIntervalId);
         console.log('All child processes finished. Exiting now.');
