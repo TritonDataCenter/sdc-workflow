@@ -87,6 +87,7 @@ release: setup deps docs $(SMF_MANIFESTS)
 		$(ROOT)/node_modules \
 		$(ROOT)/package.json \
 		$(ROOT)/npm-shrinkwrap.json \
+		$(ROOT)/wf-runner-quit.sh \
 		$(ROOT)/smf \
 		$(TMPDIR)/root/opt/smartdc/workflow/
 	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
