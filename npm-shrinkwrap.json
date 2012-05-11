@@ -22,13 +22,24 @@
         },
         "moray-client": {
           "version": "1.0.0",
-          "from": "git+ssh://git@git.joyent.com:moray-client.git#20c244c833addfc38782959fcf5fe4e9462c6dab",
+          "from": "git+ssh://git@git.joyent.com:moray-client.git#19dacfe72662e7f4947aff6eb06f273970604dd0",
           "dependencies": {
             "pooling": {
-              "version": "0.1.0",
+              "version": "0.2.1",
+              "from": "git://github.com/mcavage/node-pooling.git#master",
               "dependencies": {
-                "bunyan": {
-                  "version": "0.6.8"
+                "vasync": {
+                  "version": "1.1.1",
+                  "dependencies": {
+                    "verror": {
+                      "version": "1.1.0",
+                      "dependencies": {
+                        "extsprintf": {
+                          "version": "1.0.0"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
