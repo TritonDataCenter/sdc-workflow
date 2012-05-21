@@ -14,6 +14,7 @@
   },
   "maxHttpSockets": 100,
   "logLevel": "info",
+  "maxInitRetries": 10,
   "runner": {
     "identifier": "WF_RUNNER_UUID",
     "forks": WF_NUM_FORKS,

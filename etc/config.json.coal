@@ -14,6 +14,7 @@
   },
   "maxHttpSockets": 100,
   "logLevel": "info",
+  "maxInitRetries": 10,
   "runner": {
     "identifier": "cd925eef-93fb-4bfe-a820-2aaedf9fc006",
     "forks": 2,

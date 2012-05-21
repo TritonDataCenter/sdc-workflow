@@ -15,7 +15,7 @@ var path = require('path'),
     log,
     agentIntervalId,
     retries = 0,
-    MAX_RETRIES = 5;
+    MAX_RETRIES;
 
 
 fs.readFile(config_file, 'utf8', function (err, data) {
@@ -47,6 +47,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             }]
         };
 
+        MAX_RETRIES = config.maxInitRetries || 10;
 
         runner = wf.Runner(config);
         log = runner.log;
