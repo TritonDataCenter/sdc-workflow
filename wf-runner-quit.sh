@@ -12,14 +12,13 @@
 # propagates any non-zero exit values in a pipeline).
 #
 
-set -o errexit
 set -o pipefail
 
-PID=$(ps -ef -o pid,args|grep wf-runner.js|grep -v grep|tr ' ' ','|cut -d',' -f1)
+PID=$(pgrep -f wf-runner.js)
 
-if [[ -z $PID ]]; then
+if [[ -n "$PID" ]]; then
+  $(kill -s SIGINT $PID)
   exit 0
 else
-  `kill -s SIGINT ${PID}`
   exit 0
 fi
