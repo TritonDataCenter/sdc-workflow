@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "wf": {
-      "version": "0.3.2",
+      "version": "0.4.0",
       "dependencies": {
         "async": {
           "version": "0.1.22"
@@ -11,8 +11,8 @@
       }
     },
     "wf-moray-backend": {
-      "version": "0.3.1",
-      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#master",
+      "version": "0.4.0",
+      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#a86c36959b7c5601bc498bea1182c39bd678486b",
       "dependencies": {
         "moray-client": {
           "version": "1.0.0",
@@ -98,7 +98,7 @@
     },
     "sdc-clients": {
       "version": "8.0.0",
-      "from": "git+ssh://git@git.joyent.com:node-sdc-clients.git#7d550c3e6f7a3a6c6eb9316c3b9fd8a5449008b4",
+      "from": "git+ssh://git@git.joyent.com:node-sdc-clients.git#ea15811f76f1f5744eeb57a389efe7c1e5e236b5",
       "dependencies": {
         "http-signature": {
           "version": "0.9.9",
@@ -113,19 +113,19 @@
         },
         "ldapjs": {
           "version": "0.5.0",
-          "from": "git://github.com/mcavage/node-ldapjs.git#e378ae84748af3d46645440c23ed746da4165482",
+          "from": "git://github.com/mcavage/node-ldapjs.git#3ce399a710c8bb001b997a7bef62291b9806a87f",
           "dependencies": {
             "asn1": {
               "version": "0.1.11"
             },
             "buffertools": {
-              "version": "1.0.9"
+              "version": "1.1.0"
             },
             "bunyan": {
-              "version": "0.6.8"
+              "version": "0.10.0"
             },
             "dtrace-provider": {
-              "version": "0.0.7"
+              "version": "0.0.9"
             },
             "nopt": {
               "version": "1.0.10",
@@ -136,7 +136,25 @@
               }
             },
             "pooling": {
-              "version": "0.1.0"
+              "version": "0.2.1",
+              "dependencies": {
+                "bunyan": {
+                  "version": "0.7.0"
+                },
+                "vasync": {
+                  "version": "1.1.1",
+                  "dependencies": {
+                    "verror": {
+                      "version": "1.1.0",
+                      "dependencies": {
+                        "extsprintf": {
+                          "version": "1.0.0"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         },

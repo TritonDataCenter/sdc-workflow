@@ -14,55 +14,52 @@ var net = require('net'),
     connections = 0;
 
 fs.readFile(config_file, 'utf8', function (err, data) {
-  if (err) {
-    console.error('Error reading config file:');
-    console.dir(err);
-    process.exit(1);
-  } else {
-    try {
-      config = JSON.parse(data);
-    } catch (e) {
-      console.error('Error parsing config file JSON:');
-      console.dir(e);
-      process.exit(1);
-    }
-
-    if (typeof (config.maxHttpSockets) === 'number') {
-      console.log('Tuning max sockets to %d', config.maxHttpSockets);
-      http.globalAgent.maxSockets = config.maxHttpSockets;
-      https.globalAgent.maxSockets = config.maxHttpSockets;
-    }
-
-    config.logger = {
-      name: 'wf-console',
-      streams: [ {
-        level: config.logLevel || 'info',
-        stream: process.stdout
-      }]
-    };
-
-    var Backend = require(config.backend.module),
-        log = new Logger(config.logger),
-        backend = new Backend(config.backend.opts);
-
-    backend.init(function (err) {
-      if (err) {
-        log.error({err: err}, 'Error initializing backend');
+    if (err) {
+        console.error('Error reading config file:');
+        console.dir(err);
         process.exit(1);
-      }
-      log.info('Backend initialized');
-      net.createServer(function (socket) {
-        connections += 1;
-        var remote = repl.start('wf-console> ', socket);
-        remote.context.backend = backend;
-        remote.context.log = log;
-        remote.context.config = config;
-        remote.context.wf = wf;
-      }).listen('/tmp/node-repl.sock');
-      // nc -U /tmp/node-repl.sock
-    });
+    } else {
+        try {
+            config = JSON.parse(data);
+        } catch (e) {
+            console.error('Error parsing config file JSON:');
+            console.dir(e);
+            process.exit(1);
+        }
 
+        if (typeof (config.maxHttpSockets) === 'number') {
+            console.log('Tuning max sockets to %d', config.maxHttpSockets);
+            http.globalAgent.maxSockets = config.maxHttpSockets;
+            https.globalAgent.maxSockets = config.maxHttpSockets;
+        }
 
+        config.logger = {
+            name: 'wf-console',
+            streams: [ {
+                level: config.logLevel || 'info',
+                stream: process.stdout
+            }]
+        };
 
-  }
+        var Backend = require(config.backend.module),
+            log = new Logger(config.logger),
+            backend = new Backend(config.backend.opts);
+
+        backend.init(function (err) {
+            if (err) {
+                log.error({err: err}, 'Error initializing backend');
+                process.exit(1);
+            }
+            log.info('Backend initialized');
+            net.createServer(function (socket) {
+                connections += 1;
+                var remote = repl.start('wf-console> ', socket);
+                remote.context.backend = backend;
+                remote.context.log = log;
+                remote.context.config = config;
+                remote.context.wf = wf;
+            }).listen('/tmp/node-repl.sock');
+            // nc -U /tmp/node-repl.sock
+        });
+    }
 });

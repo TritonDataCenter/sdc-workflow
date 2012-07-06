@@ -17,85 +17,87 @@ var path = require('path'),
 
 
 fs.readFile(config_file, 'utf8', function (err, data) {
-  if (err) {
-    console.error('Error reading config file:');
-    console.dir(err);
-    process.exit(1);
-  } else {
-    try {
-      config = JSON.parse(data);
-    } catch (e) {
-      console.error('Error parsing config file JSON:');
-      console.dir(e);
-      process.exit(1);
+    if (err) {
+        console.error('Error reading config file:');
+        console.dir(err);
+        process.exit(1);
+    } else {
+        try {
+            config = JSON.parse(data);
+        } catch (e) {
+            console.error('Error parsing config file JSON:');
+            console.dir(e);
+            process.exit(1);
+        }
+
+        if (typeof (config.maxHttpSockets) === 'number') {
+            console.log('Tuning max sockets to %d', config.maxHttpSockets);
+            http.globalAgent.maxSockets = config.maxHttpSockets;
+            https.globalAgent.maxSockets = config.maxHttpSockets;
+        }
+
+        config.logger = {
+            streams: [ {
+                level: config.logLevel || 'info',
+                stream: process.stdout
+            }]
+        };
+
+        api = wf.API(config);
+        log = api.log;
+
+        api.init(function () {
+            log.info('API server up and running!');
+        });
+
+        // Setup a logger on HTTP Agent queueing
+        setInterval(function () {
+            var agent = http.globalAgent;
+            if (agent.requests && agent.requests.length > 0) {
+                log.warn('http.globalAgent queueing, depth=%d',
+                        agent.requests.length);
+                }
+            agent = https.globalAgent;
+            if (agent.requests && agent.requests.length > 0) {
+                log.warn('https.globalAgent queueing, depth=%d',
+                         agent.requests.length);
+            }
+        });
+
+        process.on('SIGUSR1', function () {
+            function decreaseLevel(logger) {
+                var pos = levels.indexOf(logger._level);
+
+                console.log('Got SIGUSR1. Attempting to decrease log level');
+
+                if (pos === (levels.length + 1)) {
+                    console.log('Log level already set to the minimun. ' +
+                        'Doing nothing');
+                } else {
+                    logger.level(levels[pos + 1]);
+                    console.log('Log level set to ' + levels[pos + 1]);
+                }
+            }
+            [api.log, api.server.log, api.backend.log,
+                api.backend.client.client.log].forEach(decreaseLevel);
+            });
+
+        process.on('SIGUSR2', function () {
+            function increaseLevel(logger) {
+                var pos = levels.indexOf(logger._level);
+
+                console.log('Got SIGUSR2. Attempting to increase log level');
+
+                if (pos === 0) {
+                    console.log('Log level already set to the maximun. ' +
+                        'Doing nothing');
+                } else {
+                    logger.level(levels[pos - 1]);
+                    console.log('Log level set to ' + levels[pos - 1]);
+                }
+            }
+            [api.log, api.server.log, api.backend.log,
+                api.backend.client.pool.log].forEach(increaseLevel);
+        });
     }
-
-    if (typeof (config.maxHttpSockets) === 'number') {
-      console.log('Tuning max sockets to %d', config.maxHttpSockets);
-      http.globalAgent.maxSockets = config.maxHttpSockets;
-      https.globalAgent.maxSockets = config.maxHttpSockets;
-    }
-
-    config.logger = {
-      streams: [ {
-        level: config.logLevel || 'info',
-        stream: process.stdout
-      }]
-    };
-
-    api = wf.API(config);
-    log = api.log;
-
-    api.init(function () {
-      log.info('API server up and running!');
-    });
-
-    // Setup a logger on HTTP Agent queueing
-    setInterval(function () {
-      var agent = http.globalAgent;
-      if (agent.requests && agent.requests.length > 0) {
-        log.warn('http.globalAgent queueing, depth=%d',
-                 agent.requests.length);
-        }
-      agent = https.globalAgent;
-      if (agent.requests && agent.requests.length > 0) {
-        log.warn('https.globalAgent queueing, depth=%d',
-                 agent.requests.length);
-        }
-    });
-
-    process.on('SIGUSR1', function () {
-      function decreaseLevel(logger) {
-        var pos = levels.indexOf(logger._level);
-
-        console.log('Got SIGUSR1. Attempting to decrease log level');
-
-        if (pos === (levels.length + 1)) {
-          console.log('Log level already set to the minimun. Doing nothing');
-        } else {
-          logger.level(levels[pos + 1]);
-          console.log('Log level set to ' + levels[pos + 1]);
-        }
-      }
-      [api.log, api.server.log, api.backend.log,
-        api.backend.client.client.log].forEach(decreaseLevel);
-    });
-
-    process.on('SIGUSR2', function () {
-      function increaseLevel(logger) {
-        var pos = levels.indexOf(logger._level);
-
-        console.log('Got SIGUSR2. Attempting to increase log level');
-
-        if (pos === 0) {
-          console.log('Log level already set to the maximun. Doing nothing');
-        } else {
-          logger.level(levels[pos - 1]);
-          console.log('Log level set to ' + levels[pos - 1]);
-        }
-      }
-      [api.log, api.server.log, api.backend.log,
-        api.backend.client.pool.log].forEach(increaseLevel);
-    });
-  }
 });

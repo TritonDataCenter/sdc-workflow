@@ -1,30 +1,32 @@
 {
-  "backend": {
-    "module": "wf-moray-backend",
-    "opts": {
-      "url": "WF_MORAY_URL"
+    "backend": {
+        "module": "wf-moray-backend",
+        "opts": {
+            "url": "WF_MORAY_URL"
+        }
+    },
+    "api": {
+        "port": 80,
+        "cert": "/opt/smartdc/workflow/ssl/cert.pem",
+        "key": "/opt/smartdc/workflow/ssl/key.pem",
+        "user": "HTTP_ADMIN_USER",
+        "password": "HTTP_ADMIN_PW"
+    },
+    "maxHttpSockets": 100,
+    "logLevel": "info",
+    "maxInitRetries": 10,
+    "runner": {
+        "identifier": "WF_RUNNER_UUID",
+        "forks": WF_NUM_FORKS,
+        "run_interval": WF_RUN_INTERVAL,
+        "sandbox": {
+            "modules": {
+                "http": "http",
+                "uuid": "node-uuid",
+                "restify": "restify",
+                "sdcClients": "sdc-clients"
+            }
+        }
     }
-  },
-  "api": {
-    "port": 80,
-    "cert": "/opt/smartdc/workflow/ssl/cert.pem",
-    "key": "/opt/smartdc/workflow/ssl/key.pem",
-    "user": "HTTP_ADMIN_USER",
-    "password": "HTTP_ADMIN_PW"
-  },
-  "maxHttpSockets": 100,
-  "logLevel": "info",
-  "maxInitRetries": 10,
-  "runner": {
-    "identifier": "WF_RUNNER_UUID",
-    "forks": WF_NUM_FORKS,
-    "run_interval": WF_RUN_INTERVAL,
-    "sandbox": {
-      "http": "http",
-      "uuid": "node-uuid",
-      "restify": "restify",
-      "sdcClients": "sdc-clients"
-    }
-  }
 }
 
