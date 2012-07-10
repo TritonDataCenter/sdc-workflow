@@ -98,7 +98,7 @@
     },
     "sdc-clients": {
       "version": "8.0.0",
-      "from": "git+ssh://git@git.joyent.com:node-sdc-clients.git#ea15811f76f1f5744eeb57a389efe7c1e5e236b5",
+      "from": "git+ssh://git@git.joyent.com:node-sdc-clients.git#55b14a4766620886c36119dee38dbd34cd3cbf86",
       "dependencies": {
         "http-signature": {
           "version": "0.9.9",
@@ -112,11 +112,13 @@
           }
         },
         "ldapjs": {
-          "version": "0.5.0",
-          "from": "git://github.com/mcavage/node-ldapjs.git#3ce399a710c8bb001b997a7bef62291b9806a87f",
+          "version": "0.5.2",
           "dependencies": {
             "asn1": {
               "version": "0.1.11"
+            },
+            "assert-plus": {
+              "version": "0.1.0"
             },
             "buffertools": {
               "version": "1.1.0"

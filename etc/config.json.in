@@ -25,7 +25,16 @@
                 "uuid": "node-uuid",
                 "restify": "restify",
                 "sdcClients": "sdc-clients"
-            }
+            },
+            "ufds_url": "UFDS_URL",
+            "ufds_dn": "UFDS_LDAP_ROOT_DN",
+            "ufds_password": "UFDS_LDAP_ROOT_PW",
+            "dapi_url": "DAPI_URL",
+            "napi_url": "NAPI_URL",
+            "napi_username": "NAPI_HTTP_ADMIN_USER",
+            "napi_password": "NAPI_HTTP_ADMIN_PW",
+            "cnapi_url": "CNAPI_URL",
+            "vmapi_url": "VMAPI_URL"
         }
     }
 }
