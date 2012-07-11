@@ -26,15 +26,15 @@
                 "restify": "restify",
                 "sdcClients": "sdc-clients"
             },
-            "ufds_url": "UFDS_URL",
-            "ufds_dn": "UFDS_LDAP_ROOT_DN",
-            "ufds_password": "UFDS_LDAP_ROOT_PW",
-            "dapi_url": "DAPI_URL",
-            "napi_url": "NAPI_URL",
-            "napi_username": "NAPI_HTTP_ADMIN_USER",
-            "napi_password": "NAPI_HTTP_ADMIN_PW",
-            "cnapi_url": "CNAPI_URL",
-            "vmapi_url": "VMAPI_URL"
+            "ufdsUrl": "UFDS_URL",
+            "ufdsDn": "UFDS_LDAP_ROOT_DN",
+            "ufdsPassword": "UFDS_LDAP_ROOT_PW",
+            "dapiUrl": "DAPI_URL",
+            "napiUrl": "NAPI_URL",
+            "napiUsername": "NAPI_HTTP_ADMIN_USER",
+            "napiPassword": "NAPI_HTTP_ADMIN_PW",
+            "cnapiUrl": "CNAPI_URL",
+            "vmapiUrl": "VMAPI_URL"
         }
     }
 }
