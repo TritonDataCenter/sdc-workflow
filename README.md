@@ -3,7 +3,7 @@
 Repository: <git@git.joyent.com:workflow.git>
 Browsing: <https://mo.joyent.com/workflow>
 Who: Pedro P. Candel
-Docs: <https://head.no.de/docs/workflow>
+Docs: <https://mo.joyent.com/docs/workflow>
 Tickets/bugs: <https://devhub.joyent.com/jira/browse/WORKFLOW>
 
 

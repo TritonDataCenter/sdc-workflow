@@ -12,8 +12,8 @@ build and setup workflow zones either into SDC Headnode or Compute Nodes.
 
 Please, note this is not the Open Source Version of `wf` and backend modules.
 Those are publicly available at github. See
-[https://github.com/kusor/node-workflow](node-workflow repo on github) and the
-[http://kusor.github.com/node-workflow/](wf docs) for reference.
+[node-workflow repo on github](https://github.com/kusor/node-workflow) and the
+[wf docs](http://kusor.github.com/node-workflow/) for reference.
 
 
 ## Project details
@@ -23,6 +23,7 @@ Those are publicly available at github. See
 - Who: Pedro P. Candel
 - Docs: [https://head.no.de/docs/workflow](https://head.no.de/docs/workflow)
 - Tickets/bugs: [https://devhub.joyent.com/jira/browse/WORKFLOW](https://devhub.joyent.com/jira/browse/WORKFLOW)
+
 
 ## Adding a Node Module to Workflow's Sandbox
 
