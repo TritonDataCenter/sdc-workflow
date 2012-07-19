@@ -133,6 +133,6 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                 log.warn('https.globalAgent queueing, depth=%d',
                          agent.requests.length);
               }
-        });
+        }, 1000);
     }
 });
