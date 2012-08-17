@@ -47,7 +47,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             }]
         };
 
-        MAX_RETRIES = config.maxInitRetries || 10;
+        MAX_RETRIES = config.maxInitRetries || 10;
 
         runner = wf.Runner(config);
         log = runner.log;
