@@ -4,6 +4,7 @@
   "dependencies": {
     "wf": {
       "version": "0.4.0",
+      "from": "git+https://github.com/kusor/node-workflow.git#3c45488340087c92024d50ea8b07a03e58c61235",
       "dependencies": {
         "async": {
           "version": "0.1.22"
@@ -14,6 +15,9 @@
       "version": "0.4.0",
       "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#a86c36959b7c5601bc498bea1182c39bd678486b",
       "dependencies": {
+        "bunyan": {
+          "version": "0.8.0"
+        },
         "moray-client": {
           "version": "1.0.0",
           "from": "git+ssh://git@git.joyent.com:moray-client.git#415c8ba1a2619c41973923ba8364c661477e06cd",
@@ -48,13 +52,16 @@
       }
     },
     "bunyan": {
-      "version": "0.8.0"
+      "version": "0.13.0"
     },
     "restify": {
       "version": "1.4.3",
       "dependencies": {
         "async": {
           "version": "0.1.22"
+        },
+        "bunyan": {
+          "version": "0.8.0"
         },
         "byline": {
           "version": "2.0.2"
@@ -166,13 +173,81 @@
         "clone": {
           "version": "0.1.0"
         },
+        "bunyan": {
+          "version": "0.8.0"
+        },
         "nodeunit": {
-          "version": "0.7.4"
+          "version": "0.7.4",
+          "dependencies": {
+            "tap": {
+              "version": "0.2.5",
+              "dependencies": {
+                "inherits": {
+                  "version": "1.0.0"
+                },
+                "yamlish": {
+                  "version": "0.0.5"
+                },
+                "slide": {
+                  "version": "1.1.3"
+                },
+                "runforcover": {
+                  "version": "0.0.2",
+                  "dependencies": {
+                    "bunker": {
+                      "version": "0.1.2",
+                      "dependencies": {
+                        "burrito": {
+                          "version": "0.2.12",
+                          "dependencies": {
+                            "traverse": {
+                              "version": "0.5.2"
+                            },
+                            "uglify-js": {
+                              "version": "1.1.1"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "nopt": {
+                  "version": "1.0.10",
+                  "dependencies": {
+                    "abbrev": {
+                      "version": "1.0.3"
+                    }
+                  }
+                },
+                "mkdirp": {
+                  "version": "0.3.3"
+                },
+                "difflet": {
+                  "version": "0.2.1",
+                  "dependencies": {
+                    "traverse": {
+                      "version": "0.6.3"
+                    },
+                    "charm": {
+                      "version": "0.0.8"
+                    }
+                  }
+                },
+                "deep-equal": {
+                  "version": "0.0.0"
+                },
+                "buffer-equal": {
+                  "version": "0.0.0"
+                }
+              }
+            }
+          }
         }
       }
     },
     "tap": {
-      "version": "0.2.5",
+      "version": "0.2.6",
       "dependencies": {
         "inherits": {
           "version": "1.0.0"
@@ -205,7 +280,7 @@
           }
         },
         "nopt": {
-          "version": "1.0.10",
+          "version": "2.0.0",
           "dependencies": {
             "abbrev": {
               "version": "1.0.3"
