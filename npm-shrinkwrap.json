@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "wf": {
-      "version": "0.4.0",
-      "from": "git+https://github.com/kusor/node-workflow.git#3c45488340087c92024d50ea8b07a03e58c61235",
+      "version": "0.4.1",
+      "from": "git+https://github.com/kusor/node-workflow.git#baeb7c12cdb6dd67637af8d17e8e036f58c808e8",
       "dependencies": {
         "async": {
           "version": "0.1.22"
@@ -288,7 +288,7 @@
           }
         },
         "mkdirp": {
-          "version": "0.3.3"
+          "version": "0.3.4"
         },
         "difflet": {
           "version": "0.2.1",
