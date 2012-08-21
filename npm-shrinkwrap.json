@@ -4,7 +4,7 @@
   "dependencies": {
     "wf": {
       "version": "0.4.1",
-      "from": "git+https://github.com/kusor/node-workflow.git#baeb7c12cdb6dd67637af8d17e8e036f58c808e8",
+      "from": "git+https://github.com/kusor/node-workflow.git#18a845248beaf0846f4f54d83d169df039c77318",
       "dependencies": {
         "async": {
           "version": "0.1.22"
