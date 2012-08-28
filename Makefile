@@ -36,8 +36,14 @@ JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -o indent=4,doxygen,unparenthesized-return=0
 SMF_MANIFESTS_IN = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
 
+
+# The prebuilt sdcnode version we want. See
+# "tools/mk/Makefile.node_prebuilt.targ" for details.
+NODE_PREBUILT_VERSION=v0.8.6
+NODE_PREBUILT_TAG=zone
+
 include ./tools/mk/Makefile.defs
-include ./tools/mk/Makefile.node.defs
+include ./tools/mk/Makefile.node_prebuilt.defs
 include ./tools/mk/Makefile.smf.defs
 
 #
@@ -58,7 +64,7 @@ test: $(TAP)
 
 
 include ./tools/mk/Makefile.deps
-include ./tools/mk/Makefile.node.targ
+include ./tools/mk/Makefile.node_prebuilt.targ
 include ./tools/mk/Makefile.smf.targ
 include ./tools/mk/Makefile.targ
 
