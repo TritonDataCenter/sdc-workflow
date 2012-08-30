@@ -2,15 +2,6 @@
   "name": "workflow",
   "version": "1.0.0",
   "dependencies": {
-    "wf": {
-      "version": "0.4.1",
-      "from": "git+https://github.com/kusor/node-workflow.git#740dcadfba3a8056a3b0889f1a0276be28184457",
-      "dependencies": {
-        "async": {
-          "version": "0.1.22"
-        }
-      }
-    },
     "wf-moray-backend": {
       "version": "0.4.0",
       "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#a86c36959b7c5601bc498bea1182c39bd678486b",
@@ -46,6 +37,15 @@
             }
           }
         },
+        "async": {
+          "version": "0.1.22"
+        }
+      }
+    },
+    "wf": {
+      "version": "0.4.1",
+      "from": "git+https://github.com/kusor/node-workflow.git#d08ae9df3b2eb9573882701e1aeabd5fb8d65e88",
+      "dependencies": {
         "async": {
           "version": "0.1.22"
         }
