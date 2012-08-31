@@ -14,6 +14,8 @@
 # included Makefiles (in eng.git) so that other teams can use them too.
 #
 
+NAME		:= workflow
+
 #
 # Tools
 #
@@ -34,10 +36,21 @@ JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
 JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -o indent=4,doxygen,unparenthesized-return=0
-SMF_MANIFESTS_IN = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
+SMF_MANIFESTS = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
+
+# The prebuilt sdcnode version we want. See
+# "tools/mk/Makefile.node_prebuilt.targ" for details.
+ifeq ($(shell uname -s),SunOS)
+	NODE_PREBUILT_VERSION=v0.8.8
+	NODE_PREBUILT_TAG=zone
+endif
 
 include ./tools/mk/Makefile.defs
-include ./tools/mk/Makefile.node.defs
+ifeq ($(shell uname -s),SunOS)
+	include ./tools/mk/Makefile.node_prebuilt.defs
+else
+	include ./tools/mk/Makefile.node.defs
+endif
 include ./tools/mk/Makefile.smf.defs
 
 #
@@ -45,10 +58,10 @@ include ./tools/mk/Makefile.smf.defs
 #
 .PHONY: all
 all: $(SMF_MANIFESTS) | $(TAP)
-	$(NPM) rebuild
+	$(NPM) install && $(NPM) update
 
 $(TAP): | $(NPM_EXEC)
-	$(NPM) install
+	$(NPM) install && $(NPM) update
 
 CLEAN_FILES += $(TAP) ./node_modules/tap
 
@@ -56,19 +69,13 @@ CLEAN_FILES += $(TAP) ./node_modules/tap
 test: $(TAP)
 	TAP=1 $(TAP) test/*.test.js
 
-
-include ./tools/mk/Makefile.deps
-include ./tools/mk/Makefile.node.targ
-include ./tools/mk/Makefile.smf.targ
-include ./tools/mk/Makefile.targ
-
 ROOT                    := $(shell pwd)
-RELEASE_TARBALL         := workflow-pkg-$(STAMP).tar.bz2
+RELEASE_TARBALL         := $(NAME)-pkg-$(STAMP).tar.bz2
 TMPDIR                  := /tmp/$(STAMP)
 
 .PHONY: setup
 setup: | $(NPM_EXEC)
-	$(NPM) install
+	$(NPM) install && $(NPM) update
 
 .PHONY: release
 release: setup deps docs $(SMF_MANIFESTS)
@@ -100,5 +107,15 @@ publish: release
 		echo "error: 'BITS_DIR' must be set for 'publish' target"; \
 		exit 1; \
 	fi
-	mkdir -p $(BITS_DIR)/workflow
-	cp $(ROOT)/$(RELEASE_TARBALL) $(BITS_DIR)/workflow/$(RELEASE_TARBALL)
+	mkdir -p $(BITS_DIR)/$(NAME)
+	cp $(ROOT)/$(RELEASE_TARBALL) $(BITS_DIR)/$(NAME)/$(RELEASE_TARBALL)
+
+
+include ./tools/mk/Makefile.deps
+ifeq ($(shell uname -s),SunOS)
+	include ./tools/mk/Makefile.node_prebuilt.targ
+else
+	include ./tools/mk/Makefile.node.targ
+endif
+include ./tools/mk/Makefile.smf.targ
+include ./tools/mk/Makefile.targ
