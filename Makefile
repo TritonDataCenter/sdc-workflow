@@ -36,7 +36,7 @@ JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
 JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -o indent=4,doxygen,unparenthesized-return=0
-SMF_MANIFESTS = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
+SMF_MANIFESTS_IN = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
 
 # The prebuilt sdcnode version we want. See
 # "tools/mk/Makefile.node_prebuilt.targ" for details.
@@ -57,17 +57,17 @@ include ./tools/mk/Makefile.smf.defs
 # Repo-specific targets
 #
 .PHONY: all
-all: $(SMF_MANIFESTS) | $(TAP)
+all: build
+
+.PHONY: build
+build: $(SMF_MANIFESTS) | $(TAP) $(REPO_DEPS)
 	$(NPM) install && $(NPM) update
 
 $(TAP): | $(NPM_EXEC)
-	$(NPM) install && $(NPM) update
+	$(NPM) install
 
 CLEAN_FILES += $(TAP) ./node_modules/tap
 
-.PHONY: test
-test: $(TAP)
-	TAP=1 $(TAP) test/*.test.js
 
 ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := $(NAME)-pkg-$(STAMP).tar.bz2
@@ -78,7 +78,7 @@ setup: | $(NPM_EXEC)
 	$(NPM) install && $(NPM) update
 
 .PHONY: release
-release: setup deps docs $(SMF_MANIFESTS)
+release: build docs
 	@echo "Building $(RELEASE_TARBALL)"
 	@mkdir -p $(TMPDIR)/root/opt/smartdc/workflow
 	@mkdir -p $(TMPDIR)/site
