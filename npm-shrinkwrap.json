@@ -4,23 +4,26 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.5.0",
-      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#0a58e0c1246c2028da9bea497421f6d9dee71134",
+      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#a9d933552c626de616f4b7022ef967a6a437d4b3",
       "dependencies": {
         "bunyan": {
           "version": "0.10.0"
         },
         "moray": {
           "version": "1.0.0",
-          "from": "git+ssh://git@git.joyent.com:node-moray.git#4af3f443a8256783f1367e195942969b29e6b8fa",
+          "from": "git+ssh://git@git.joyent.com:node-moray.git#cced4a8ae9665901afa76a7c4972341d21c3465d",
           "dependencies": {
             "assert-plus": {
-              "version": "0.1.0"
+              "version": "0.1.1"
+            },
+            "bunyan": {
+              "version": "0.13.5"
             },
             "clone": {
-              "version": "0.1.0"
+              "version": "0.1.1"
             },
             "fast": {
-              "version": "0.1.5",
+              "version": "0.1.6",
               "dependencies": {
                 "crc": {
                   "version": "0.2.0"
@@ -60,13 +63,16 @@
       "version": "0.4.1",
       "from": "git+https://github.com/kusor/node-workflow.git#2138338d30d383dc7f9a48532c08c4ebb591324b",
       "dependencies": {
+        "bunyan": {
+          "version": "0.13.0"
+        },
         "async": {
           "version": "0.1.22"
         }
       }
     },
     "bunyan": {
-      "version": "0.13.0"
+      "version": "0.13.5"
     },
     "restify": {
       "version": "1.4.3",
