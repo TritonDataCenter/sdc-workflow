@@ -4,20 +4,14 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.5.0",
-      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#c9599574782072848620b311a171b1b8f5bc4b22",
+      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#a0a95a37",
       "dependencies": {
-        "bunyan": {
-          "version": "0.10.0"
-        },
         "moray": {
           "version": "1.0.0",
           "from": "git+ssh://git@git.joyent.com:node-moray.git#cced4a8ae9665901afa76a7c4972341d21c3465d",
           "dependencies": {
             "assert-plus": {
               "version": "0.1.1"
-            },
-            "bunyan": {
-              "version": "0.13.5"
             },
             "clone": {
               "version": "0.1.1"
@@ -53,23 +47,12 @@
               "version": "1.0.0"
             }
           }
-        },
-        "async": {
-          "version": "0.1.22"
         }
       }
     },
     "wf": {
-      "version": "0.4.1",
-      "from": "git+https://github.com/kusor/node-workflow.git#2138338d30d383dc7f9a48532c08c4ebb591324b",
-      "dependencies": {
-        "bunyan": {
-          "version": "0.13.0"
-        },
-        "async": {
-          "version": "0.1.22"
-        }
-      }
+      "version": "0.5.0",
+      "from": "git://github.com/kusor/node-workflow.git#de4c962d"
     },
     "bunyan": {
       "version": "0.13.5"
@@ -77,9 +60,6 @@
     "restify": {
       "version": "1.4.3",
       "dependencies": {
-        "async": {
-          "version": "0.1.22"
-        },
         "bunyan": {
           "version": "0.8.0"
         },
@@ -123,9 +103,12 @@
     "node-uuid": {
       "version": "1.3.3"
     },
+    "async": {
+      "version": "0.1.22"
+    },
     "sdc-clients": {
       "version": "8.0.0",
-      "from": "git+ssh://git@git.joyent.com:node-sdc-clients.git#3743c49e1f26b190b0ca513d196ffc19eab240fe",
+      "from": "git+ssh://git@git.joyent.com:node-sdc-clients.git#e4b5a967",
       "dependencies": {
         "http-signature": {
           "version": "0.9.9",
@@ -140,21 +123,16 @@
         },
         "ldapjs": {
           "version": "0.5.4",
+          "from": "git://github.com/mcavage/node-ldapjs.git#1531d89e",
           "dependencies": {
             "asn1": {
               "version": "0.1.11"
             },
-            "assert-plus": {
-              "version": "0.1.0"
-            },
             "buffertools": {
               "version": "1.1.0"
             },
-            "bunyan": {
-              "version": "0.10.0"
-            },
             "dtrace-provider": {
-              "version": "0.0.9"
+              "version": "0.2.0"
             },
             "nopt": {
               "version": "1.0.10",
@@ -193,14 +171,35 @@
         "clone": {
           "version": "0.1.0"
         },
-        "bunyan": {
-          "version": "0.8.0"
+        "assert-plus": {
+          "version": "0.1.0"
+        },
+        "vasync": {
+          "version": "1.3.1",
+          "dependencies": {
+            "verror": {
+              "version": "1.1.0",
+              "dependencies": {
+                "extsprintf": {
+                  "version": "1.0.0"
+                }
+              }
+            }
+          }
+        },
+        "verror": {
+          "version": "1.3.3",
+          "dependencies": {
+            "extsprintf": {
+              "version": "1.0.0"
+            }
+          }
         },
         "nodeunit": {
           "version": "0.7.4",
           "dependencies": {
             "tap": {
-              "version": "0.2.5",
+              "version": "0.3.1",
               "dependencies": {
                 "inherits": {
                   "version": "1.0.0"
@@ -233,7 +232,7 @@
                   }
                 },
                 "nopt": {
-                  "version": "1.0.10",
+                  "version": "2.0.0",
                   "dependencies": {
                     "abbrev": {
                       "version": "1.0.3"
@@ -241,10 +240,10 @@
                   }
                 },
                 "mkdirp": {
-                  "version": "0.3.3"
+                  "version": "0.3.4"
                 },
                 "difflet": {
-                  "version": "0.2.1",
+                  "version": "0.2.2",
                   "dependencies": {
                     "traverse": {
                       "version": "0.6.3"
