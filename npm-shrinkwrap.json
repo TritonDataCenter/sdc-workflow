@@ -50,12 +50,21 @@
               "version": "1.0.0"
             }
           }
+        },
+        "wf": {
+          "version": "0.5.0",
+          "from": "git://github.com/kusor/node-workflow.git#de4c962dbc"
         }
       }
     },
     "wf": {
-      "version": "0.5.0",
-      "from": "git://github.com/kusor/node-workflow.git#de4c962d"
+      "version": "0.5.1",
+      "from": "git://github.com/kusor/node-workflow.git#1693ba8a",
+      "dependencies": {
+        "dtrace-provider": {
+          "version": "0.2.0"
+        }
+      }
     },
     "bunyan": {
       "version": "0.13.5"
