@@ -90,7 +90,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                 }
             }
             [runner.log, runner.backend.log,
-              runner.backend.client.client.log].forEach(decreaseLevel);
+              runner.backend.client.log].forEach(decreaseLevel);
         });
 
         process.on('SIGUSR2', function () {
@@ -108,7 +108,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                 }
             }
             [runner.log, runner.backend.log,
-              runner.backend.client.pool.log].forEach(increaseLevel);
+              runner.backend.client.log].forEach(increaseLevel);
         });
 
         process.on('SIGINT', function () {
