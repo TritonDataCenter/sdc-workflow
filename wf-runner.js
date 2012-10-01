@@ -74,42 +74,10 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             runner.run();
             log.info('Workflow Runner up!');
         });
-
-        process.on('SIGUSR1', function () {
-            function decreaseLevel(logger) {
-                var pos = levels.indexOf(logger._level);
-
-                console.log('Got SIGUSR1. Attempting to decrease log level');
-
-                if (pos === (levels.length + 1)) {
-                    console.log('Log level already set to the minimun. ' +
-                      'Doing nothing');
-                } else {
-                    logger.level(levels[pos + 1]);
-                    console.log('Log level set to ' + levels[pos + 1]);
-                }
-            }
-            [runner.log, runner.backend.log,
-              runner.backend.client.log].forEach(decreaseLevel);
-        });
-
-        process.on('SIGUSR2', function () {
-            function increaseLevel(logger) {
-                var pos = levels.indexOf(logger._level);
-
-                console.log('Got SIGUSR2. Attempting to increase log level');
-
-                if (pos === 0) {
-                    console.log('Log level already set to the maximun. ' +
-                      'Doing nothing');
-                } else {
-                    logger.level(levels[pos - 1]);
-                    console.log('Log level set to ' + levels[pos - 1]);
-                }
-            }
-            [runner.log, runner.backend.log,
-              runner.backend.client.log].forEach(increaseLevel);
-        });
+        // Increase/decrease loggers levels using SIGUSR2/SIGUSR1:
+        var sigyan = require('sigyan');
+        sigyan.add([runner.log, runner.backend.log,
+              runner.backend.client.log]);
 
         process.on('SIGINT', function () {
             console.log('Got SIGINT. Waiting for child processes to finish');
