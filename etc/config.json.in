@@ -24,6 +24,7 @@
                 "http": "http",
                 "uuid": "node-uuid",
                 "restify": "restify",
+                "vasync": "vasync",
                 "sdcClients": "sdc-clients"
             },
             "ufdsUrl": "UFDS_URL",
