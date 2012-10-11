@@ -13,7 +13,7 @@
         "password": "HTTP_ADMIN_PW"
     },
     "maxHttpSockets": 100,
-    "logLevel": "info",
+    "logLevel": "debug",
     "maxInitRetries": 10,
     "runner": {
         "identifier": "WF_RUNNER_UUID",

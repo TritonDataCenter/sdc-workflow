@@ -38,7 +38,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
 
         config.logger = {
             streams: [ {
-                level: config.logLevel || 'debug',
+                level: config.logLevel || 'info',
                 stream: process.stdout
             }]
         };
