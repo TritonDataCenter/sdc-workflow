@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "dependencies": {
     "wf-moray-backend": {
-      "version": "0.5.1",
-      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#c9ce84e",
+      "version": "0.6.0",
+      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#0088598",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -52,12 +52,9 @@
       }
     },
     "wf": {
-      "version": "0.5.1",
-      "from": "git://github.com/kusor/node-workflow.git#8816176",
+      "version": "0.6.0",
+      "from": "git://github.com/kusor/node-workflow.git#8717290",
       "dependencies": {
-        "bunyan": {
-          "version": "0.13.5"
-        },
         "dtrace-provider": {
           "version": "0.2.0"
         }
@@ -213,7 +210,12 @@
       }
     },
     "sigyan": {
-      "version": "0.2.0"
+      "version": "0.2.0",
+      "dependencies": {
+        "bunyan": {
+          "version": "0.14.6"
+        }
+      }
     },
     "tap": {
       "version": "0.3.1",
