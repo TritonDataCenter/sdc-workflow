@@ -12,7 +12,9 @@ var path = require('path'),
               Logger.WARN, Logger.ERROR, Logger.FATAL],
     config,
     api,
-    log;
+    log,
+    retries = 0,
+    MAX_RETRIES;
 
 
 
@@ -43,10 +45,30 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             }]
         };
 
+        MAX_RETRIES = config.maxInitRetries || 10;
         api = wf.API(config);
         log = api.log;
 
-        api.init(function () {
+        var init = function (cb) {
+            api.init(function (err) {
+                if (err) {
+                    retries += 1;
+                    console.error('Error initializing wf API:');
+                    console.dir(err);
+                    if (retries >= MAX_RETRIES) {
+                        console.error('Exiting because MAX_RETRIES exceeded');
+                        process.exit(1);
+                    } else {
+                        console.log('Re-queueing API init in 15 secs');
+                        setTimeout(init, 15000, cb);
+                    }
+                } else {
+                    cb();
+                }
+            });
+        };
+
+        init(function () {
             log.info('API server up and running!');
         });
 
