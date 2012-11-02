@@ -210,12 +210,7 @@
       }
     },
     "sigyan": {
-      "version": "0.2.0",
-      "dependencies": {
-        "bunyan": {
-          "version": "0.14.6"
-        }
-      }
+      "version": "0.2.0"
     },
     "tap": {
       "version": "0.3.1",
