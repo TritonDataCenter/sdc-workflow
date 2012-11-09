@@ -33,15 +33,6 @@
                       "version": "1.0.0"
                     }
                   }
-                },
-                "verror": {
-                  "version": "1.3.4",
-                  "from": "git://github.com/davepacheco/node-verror.git#1514e14",
-                  "dependencies": {
-                    "extsprintf": {
-                      "version": "1.0.0"
-                    }
-                  }
                 }
               }
             },
@@ -320,6 +311,14 @@
               }
             }
           }
+        }
+      }
+    },
+    "verror": {
+      "version": "1.3.4",
+      "dependencies": {
+        "extsprintf": {
+          "version": "1.0.0"
         }
       }
     },

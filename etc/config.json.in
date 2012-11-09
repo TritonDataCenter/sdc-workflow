@@ -25,7 +25,8 @@
                 "uuid": "node-uuid",
                 "restify": "restify",
                 "async": "async",
-                "sdcClients": "sdc-clients"
+                "sdcClients": "sdc-clients",
+                "verror": "verror"
             },
             "ufdsUrl": "UFDS_URL",
             "ufdsDn": "UFDS_LDAP_ROOT_DN",
