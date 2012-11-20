@@ -36,7 +36,8 @@
             "napiUsername": "NAPI_HTTP_ADMIN_USER",
             "napiPassword": "NAPI_HTTP_ADMIN_PW",
             "cnapiUrl": "CNAPI_URL",
-            "vmapiUrl": "VMAPI_URL"
+            "vmapiUrl": "VMAPI_URL",
+            "imgapiUrl": "IMGAPI_URL"
         }
     }
 }
