@@ -4,7 +4,7 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.7.0",
-      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#57c5506",
+      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#b14bdf3",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
