@@ -4,24 +4,20 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.7.0",
-      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#42ea52a",
+      "from": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#67dad8c",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
-          "from": "git+ssh://git@git.joyent.com:node-moray.git#b6f1d12",
+          "from": "git+ssh://git@git.joyent.com:node-moray.git#8fcdb2e",
           "dependencies": {
             "assert-plus": {
               "version": "0.1.2"
-            },
-            "bunyan": {
-              "version": "0.14.6"
             },
             "clone": {
               "version": "0.1.1"
             },
             "fast": {
-              "version": "0.2.0",
-              "from": "git://github.com/mcavage/node-fast.git#119ce35",
+              "version": "0.2.2",
               "dependencies": {
                 "backoff": {
                   "version": "1.2.0"
@@ -30,7 +26,7 @@
                   "version": "0.2.0"
                 },
                 "microtime": {
-                  "version": "0.3.2",
+                  "version": "0.3.3",
                   "dependencies": {
                     "bindings": {
                       "version": "1.0.0"
@@ -38,6 +34,9 @@
                   }
                 }
               }
+            },
+            "once": {
+              "version": "1.1.1"
             },
             "posix-getopt": {
               "version": "1.0.0"
@@ -48,7 +47,7 @@
     },
     "wf": {
       "version": "0.7.0",
-      "from": "git://github.com/kusor/node-workflow.git#5155f9d",
+      "from": "git://github.com/kusor/node-workflow.git#d751b3c",
       "dependencies": {
         "backoff": {
           "version": "1.2.0"
@@ -71,16 +70,19 @@
     },
     "restify": {
       "version": "2.0.0",
-      "from": "git://github.com/mcavage/node-restify.git#8a1029a",
+      "from": "git://github.com/mcavage/node-restify.git#d688b4a",
       "dependencies": {
         "assert-plus": {
           "version": "0.1.2"
         },
         "bunyan": {
-          "version": "0.14.5"
+          "version": "0.16.4"
         },
         "clone": {
           "version": "0.1.1"
+        },
+        "dtrace-provider": {
+          "version": "0.2.4"
         },
         "byline": {
           "version": "2.0.3"
@@ -100,10 +102,13 @@
           }
         },
         "lru-cache": {
-          "version": "2.0.4"
+          "version": "2.1.0"
         },
         "mime": {
           "version": "1.2.7"
+        },
+        "once": {
+          "version": "1.1.1"
         },
         "qs": {
           "version": "0.5.1"
@@ -113,9 +118,6 @@
         },
         "semver": {
           "version": "1.1.0"
-        },
-        "dtrace-provider": {
-          "version": "0.2.1"
         }
       }
     },
@@ -331,7 +333,7 @@
       "version": "0.2.0"
     },
     "tap": {
-      "version": "0.3.2",
+      "version": "0.3.3",
       "dependencies": {
         "inherits": {
           "version": "1.0.0"
