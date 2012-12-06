@@ -21,6 +21,7 @@
         "run_interval": WF_RUN_INTERVAL,
         "sandbox": {
             "modules": {
+                "urlModule": "url",
                 "http": "http",
                 "uuid": "node-uuid",
                 "restify": "restify",
