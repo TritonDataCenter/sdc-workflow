@@ -5,7 +5,7 @@
   "author": "Joyent (joyent.com)",
   "private": true,
   "dependencies": {
-    "wf-moray-backend": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#3ba13ce",
+    "wf-moray-backend": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#7fff1e4",
     "wf": "git://github.com/kusor/node-workflow.git#5b8551d",
     "bunyan": "0.16.7",
     "restify": "git://github.com/mcavage/node-restify.git#30ca043",
