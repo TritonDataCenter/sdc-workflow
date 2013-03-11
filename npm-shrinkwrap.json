@@ -4,8 +4,8 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.8.0",
-      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#e62f907db8b6e08ef27f1c10ebeb0d77fea8b52a",
-      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#e62f907db8b6e08ef27f1c10ebeb0d77fea8b52a",
+      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#91da100776a8128ed1d1095335f74d42a155fdc6",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#91da100776a8128ed1d1095335f74d42a155fdc6",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -23,7 +23,6 @@
             "fast": {
               "version": "0.2.6",
               "from": "fast@0.2.6",
-              "resolved": "https://registry.npmjs.org/fast/-/fast-0.2.6.tgz",
               "dependencies": {
                 "crc": {
                   "version": "0.2.0",
@@ -39,8 +38,7 @@
                   "dependencies": {
                     "bindings": {
                       "version": "1.0.0",
-                      "from": "bindings@1.0.0",
-                      "resolved": "https://registry.npmjs.org/bindings/-/bindings-1.0.0.tgz"
+                      "from": "bindings@1.0.0"
                     }
                   }
                 },
@@ -74,8 +72,7 @@
                   "dependencies": {
                     "coffee-script": {
                       "version": "1.6.1",
-                      "from": "coffee-script@>= 1.1.1",
-                      "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.6.1.tgz"
+                      "from": "coffee-script@>= 1.1.1"
                     }
                   }
                 }
