@@ -93,7 +93,6 @@ release: build docs
 		$(ROOT)/wf-console.js \
 		$(ROOT)/node_modules \
 		$(ROOT)/package.json \
-		$(ROOT)/npm-shrinkwrap.json \
 		$(ROOT)/wf-runner-quit.sh \
 		$(ROOT)/smf \
 		$(TMPDIR)/root/opt/smartdc/workflow/
