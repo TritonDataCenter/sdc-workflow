@@ -38,6 +38,7 @@
             "fast": {
               "version": "0.2.7",
               "from": "fast@0.2.7",
+              "resolved": "https://registry.npmjs.org/fast/-/fast-0.2.7.tgz",
               "dependencies": {
                 "crc": {
                   "version": "0.2.0",
@@ -75,13 +76,11 @@
               "dependencies": {
                 "buffercursor": {
                   "version": "0.0.6",
-                  "from": "buffercursor@>= 0.0.5",
-                  "resolved": "https://registry.npmjs.org/buffercursor/-/buffercursor-0.0.6.tgz"
+                  "from": "buffercursor@>= 0.0.5"
                 },
                 "binaryheap": {
                   "version": "0.0.3",
-                  "from": "binaryheap@>= 0.0.2",
-                  "resolved": "https://registry.npmjs.org/binaryheap/-/binaryheap-0.0.3.tgz"
+                  "from": "binaryheap@>= 0.0.2"
                 },
                 "ipaddr.js": {
                   "version": "0.1.1",
@@ -89,8 +88,7 @@
                   "dependencies": {
                     "coffee-script": {
                       "version": "1.6.2",
-                      "from": "coffee-script@>= 1.1.1",
-                      "resolved": "https://registry.npmjs.org/coffee-script/-/coffee-script-1.6.2.tgz"
+                      "from": "coffee-script@>= 1.1.1"
                     }
                   }
                 }
@@ -110,8 +108,8 @@
     },
     "wf": {
       "version": "0.8.2",
-      "from": "wf@git://github.com/kusor/node-workflow.git#0cce133a3ed5ce9857849046eaba29af22723309",
-      "resolved": "git://github.com/kusor/node-workflow.git#0cce133a3ed5ce9857849046eaba29af22723309",
+      "from": "wf@git://github.com/kusor/node-workflow.git#2e291d79408411595738b6add2997845ff02f138",
+      "resolved": "git://github.com/kusor/node-workflow.git#2e291d79408411595738b6add2997845ff02f138",
       "dependencies": {
         "backoff": {
           "version": "1.2.0",
@@ -119,7 +117,8 @@
         },
         "clone": {
           "version": "0.1.6",
-          "from": "clone@0.1.6"
+          "from": "clone@0.1.6",
+          "resolved": "https://registry.npmjs.org/clone/-/clone-0.1.6.tgz"
         },
         "dtrace-provider": {
           "version": "0.2.8",
@@ -130,6 +129,7 @@
     "bunyan": {
       "version": "0.20.0",
       "from": "bunyan@0.20.0",
+      "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-0.20.0.tgz",
       "dependencies": {
         "mv": {
           "version": "0.0.5",
@@ -144,6 +144,7 @@
     "restify": {
       "version": "2.3.5",
       "from": "restify@2.3.5",
+      "resolved": "https://registry.npmjs.org/restify/-/restify-2.3.5.tgz",
       "dependencies": {
         "assert-plus": {
           "version": "0.1.2",
@@ -159,7 +160,8 @@
         },
         "formidable": {
           "version": "1.0.11",
-          "from": "formidable@1.0.11"
+          "from": "formidable@1.0.11",
+          "resolved": "https://registry.npmjs.org/formidable/-/formidable-1.0.11.tgz"
         },
         "http-signature": {
           "version": "0.9.11",
@@ -185,7 +187,8 @@
         },
         "mime": {
           "version": "1.2.9",
-          "from": "mime@1.2.9"
+          "from": "mime@1.2.9",
+          "resolved": "https://registry.npmjs.org/mime/-/mime-1.2.9.tgz"
         },
         "negotiator": {
           "version": "0.2.5",
@@ -197,7 +200,8 @@
         },
         "qs": {
           "version": "0.5.3",
-          "from": "qs@0.5.3"
+          "from": "qs@0.5.3",
+          "resolved": "https://registry.npmjs.org/qs/-/qs-0.5.3.tgz"
         },
         "semver": {
           "version": "1.1.2",
@@ -205,7 +209,8 @@
         },
         "spdy": {
           "version": "1.4.6",
-          "from": "spdy@1.4.6"
+          "from": "spdy@1.4.6",
+          "resolved": "https://registry.npmjs.org/spdy/-/spdy-1.4.6.tgz"
         },
         "dtrace-provider": {
           "version": "0.2.8",
@@ -319,7 +324,8 @@
             },
             "pooling": {
               "version": "0.4.1",
-              "from": "pooling@0.4.1"
+              "from": "pooling@0.4.1",
+              "resolved": "https://registry.npmjs.org/pooling/-/pooling-0.4.1.tgz"
             }
           }
         },
@@ -329,7 +335,8 @@
         },
         "clone": {
           "version": "0.1.5",
-          "from": "clone@0.1.5"
+          "from": "clone@0.1.5",
+          "resolved": "https://registry.npmjs.org/clone/-/clone-0.1.5.tgz"
         },
         "assert-plus": {
           "version": "0.1.2",
@@ -390,7 +397,7 @@
           "version": "0.0.5"
         },
         "slide": {
-          "version": "1.1.3",
+          "version": "1.1.4",
           "from": "slide@*"
         },
         "runforcover": {
@@ -434,7 +441,7 @@
           "from": "mkdirp@~0.3"
         },
         "difflet": {
-          "version": "0.2.3",
+          "version": "0.2.5",
           "from": "difflet@~0.2.0",
           "dependencies": {
             "traverse": {
@@ -444,6 +451,11 @@
             "charm": {
               "version": "0.0.8",
               "from": "charm@0.0.x"
+            },
+            "deep-is": {
+              "version": "0.1.2",
+              "from": "deep-is@0.1.x",
+              "resolved": "https://registry.npmjs.org/deep-is/-/deep-is-0.1.2.tgz"
             }
           }
         },
