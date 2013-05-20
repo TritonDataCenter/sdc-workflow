@@ -6,6 +6,10 @@ Who: Pedro P. Candel
 Docs: <https://mo.joyent.com/docs/workflow>
 Tickets/bugs: <https://devhub.joyent.com/jira/browse/WORKFLOW>
 
+# Documentation:
+
+Documentation for the Open Source `node-workflow` project is publicly available
+for both [Terminology and system description](http://kusor.github.io/node-workflow/ "This includes how wf-runners work") and the [Workflow REST API](http://kusor.github.io/node-workflow/workflowapi.html).
 
 # Overview
 

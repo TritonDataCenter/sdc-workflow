@@ -4,8 +4,8 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.8.2",
-      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#448fa72557263f5503b791868c3c5f3dd90c908b",
-      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#448fa72557263f5503b791868c3c5f3dd90c908b",
+      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#8780bc646be4c4e6e248c4da84cd19b7566b745b",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#8780bc646be4c4e6e248c4da84cd19b7566b745b",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -73,8 +73,9 @@
               "from": "native-dns@0.4.0",
               "dependencies": {
                 "buffercursor": {
-                  "version": "0.0.6",
-                  "from": "buffercursor@>= 0.0.5"
+                  "version": "0.0.7",
+                  "from": "buffercursor@>= 0.0.5",
+                  "resolved": "https://registry.npmjs.org/buffercursor/-/buffercursor-0.0.7.tgz"
                 },
                 "binaryheap": {
                   "version": "0.0.3",
@@ -289,6 +290,7 @@
             "nopt": {
               "version": "2.1.1",
               "from": "nopt@2.1.1",
+              "resolved": "https://registry.npmjs.org/nopt/-/nopt-2.1.1.tgz",
               "dependencies": {
                 "abbrev": {
                   "version": "1.0.4",
