@@ -16,7 +16,7 @@ Those are publicly available at github. See
 [wf docs](http://kusor.github.com/node-workflow/) for reference.
 
 
-## Project details
+# Project details
 
 - Repository: `git@git.joyent.com:workflow.git`
 - Browsing: [https://mo.joyent.com/workflow](https://mo.joyent.com/workflow)
@@ -24,6 +24,7 @@ Those are publicly available at github. See
 - Docs: [https://mo.joyent.com/docs/workflow](https://mo.joyent.com/docs/workflow)
 - Tickets/bugs: [https://devhub.joyent.com/jira/browse/WORKFLOW](https://devhub.joyent.com/jira/browse/WORKFLOW)
 
+# Developer Guide
 
 ## Adding a Node Module to Workflow's Sandbox
 
@@ -40,6 +41,8 @@ the required modules.
 Finally, in order to make your module available for the workflow tasks, you
 need to add it to `etc/config.json.in` which is the file used to generate the
 configuration file for a SDC setup.
+
+# Operator Guide
 
 ## Logging and log level changes
 
@@ -70,7 +73,7 @@ Then, you can change log levels using the previous process PID:
     kill -s SIGUSR2 <PID>
     kill -s SIGUSR1 <PID>
 
-## Inspecting moray backend from the command line
+## Inspecting moray backend from the cli
 
 Besides the default services, an additional `wf-console.js` script is provided,
 which can be initialized and used to directly talk to the moray backend the same
@@ -96,3 +99,39 @@ Available objects on the REPL session, apart of the default node globals are:
 
 Additionally, `backend` provides access to `moray-client` at `backend.client`, so you
 can directly talk REST to `moray`. Look at `moray-client` module setup above `wf-moray-backend`.
+
+
+## Watching for job failures (dtrace)
+
+The `wf-runner` service fires some dtrace probes. We can use 'wf-job-done'
+to watch for job failures. Run the following in the workflow zone:
+
+    dtrace -qn 'workflow*:::wf-job-done /copyinstr(arg2) != "succeeded"/ { printf("%s %s %s\n", copyinstr(arg0), copyinstr(arg1), copyinstr(arg2)); }'
+
+For example:
+
+    [root@9b7dbc12-7374-48ef-841e-18708faf4619 (coal:workflow0) ~]# dtrace -qn 'workflow*:::wf-job-done /copyinstr(arg2) != "succeeded" / { printf("%s %s %s\n", copyinstr(arg0), copyinstr(arg1), copyinstr(arg2)); }'
+    6205964e-b588-4605-893a-e72c98a8dc28 provision-7.0.2 failed
+
+
+## Watching for job completion (bunyan)
+
+In the workflow zone:
+
+    bunyan -p wf-runner -l info -c 'this.runtime'
+
+or:
+
+    tail -f `svcs -L wf-runner` | bunyan -l info -c 'this.runtime'
+
+Or use the 'warn' level to only get unsuccessful job completions.
+
+For example:
+
+    [root@9b7dbc12-7374-48ef-841e-18708faf4619 (coal:workflow0) ~]# tail -f `svcs -L wf-runner` | bunyan -l warn -c 'this.runtime'
+    [2013-05-24T21:34:46.875Z]  WARN: workflow-runner/1370 on 9b7dbc12-7374-48ef-841e-18708faf4619: job completed (runner_uuid=9b7dbc12-7374-48ef-841e-18708faf4619, runtime=47471)
+        job: {
+          "uuid": "34bda784-beb9-49d4-971c-5a27b58b0e21",
+          "name": "provision-7.0.2",
+          "execution": "succeeded"
+        }
