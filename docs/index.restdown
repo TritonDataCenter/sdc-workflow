@@ -44,6 +44,123 @@ configuration file for a SDC setup.
 
 # Operator Guide
 
+## Performing searches
+
+### Searching Jobs
+
+- Searching `jobs` by `vm_uuid` is faster, given we are using indexed
+`job.target` attribute, which always matches `'(target=*' + vm_uuid + '*)'`
+for machines' jobs. (Since WORKFLOW-101).
+- Searching `jobs` on a given time period is also supported using the arguments
+`since`, for jobs created _since_ the given time and `until` for jobs created
+_until_ the specified time. Note both of these attributes values will be
+included into the search, which is made using LDAP filters. Attributes can
+take either `epoch` time values or any valid JavaScript Date string. Note that
+if the given value cannot be transformed into a valid JavaScript Date, the
+argument will be silently discarded. (Since WORKFLOW-104).
+
+Examples:
+
+The following is a very simple output of a system with very few jobs to help
+illustrating search options:
+
+    [root@headnode (coal) ~]# sdc-workflow /jobs | json -a created_at execution name
+    2013-05-27T15:38:27.173Z running reboot-7.0.0
+    2013-05-27T01:12:05.918Z succeeded provision-7.0.6
+    2013-05-27T01:01:39.919Z succeeded server-sysinfo-1.0.0
+    2013-05-27T00:56:49.635Z succeeded server-sysinfo-1.0.0
+
+Searching by `vm_uuid` will retrieve all the jobs associated with the given machine:
+
+    [root@headnode (coal) ~]# sdc-workflow /jobs?vm_uuid=767aa4fd-95b4-4c94-bc6c-71d274fb2899 | json -a created_at execution name
+    2013-05-27T15:38:27.173Z succeeded reboot-7.0.0
+    2013-05-27T01:12:05.918Z succeeded provision-7.0.6
+
+Searching jobs _"until"_, _"within"_ or _"since"_ a given time period just
+requires some caution regarding the format of the passed in `since` and `until`
+arguments.
+
+For example, to pass in the value `2013-05-27T15:38:27.173Z` for one of these
+attributes we can either URL encode it, or transform into a time since epoch
+integer:
+
+    $ node
+    > encodeURIComponent('2013-05-27T15:38:27.173Z');
+    '2013-05-27T15%3A38%3A27.173Z'
+    > new Date('2013-05-27T15:38:27.173Z').getTime();
+    1369669107173
+
+Either way, we can use for jobs search:
+
+    [root@headnode (coal) ~]# sdc-workflow /jobs?since=2013-05-27T15%3A38%3A27.173Z | json -a created_at execution name2013-05-27T15:38:27.173Z succeeded reboot-7.0.0
+    [root@headnode (coal) ~]# sdc-workflow /jobs?since=1369669107173 | json -a created_at execution name
+    2013-05-27T15:38:27.173Z succeeded reboot-7.0.0
+
+The same way we search for jobs created since a given time value, we can also search for
+jobs created until a given time:
+
+    [root@headnode (coal) ~]# sdc-workflow /jobs?until=2013-05-27T00%3A56%3A49.635Z | json -a created_at execution name
+    2013-05-27T00:56:49.635Z succeeded server-sysinfo-1.0.0
+
+
+And, of course, we can combine both parameters to search jobs created within a given
+time period:
+
+    [root@headnode (coal) ~]# sdc-workflow /jobs?since=2013-05-27T01%3A01%3A39.919Z\&until=2013-05-27T01%3A12%3A05.918Z | json -a created_at execution name
+    2013-05-27T01:12:05.918Z succeeded provision-7.0.6
+    2013-05-27T01:01:39.919Z succeeded server-sysinfo-1.0.0
+
+Also, note that it's perfectly possible passing in other valid JavaScript date values
+to these parameters, like `2013-05-27`. As far as we can transform the given value
+into a valid date, everything will work as expected. If the given value cannot be
+properly transformed into a valid Date object, the value will be silently discarded.
+
+### Searching workflows
+
+(Since WORKFLOW-81)
+
+While it's possible to search workflows by any workflow property, _the only
+indexed property is workflow's name_ (this will be improved in the future).
+
+Therefore, it's highly recommended to search workflows just by name. Searching
+by name, with the current model of workflow definition also allows to search
+workflows by version.
+
+Some search examples:
+
+1. Exact match:
+
+    # A workflow name matches exactly the provided search filter:
+    [root@headnode (coal) ~]# sdc-workflow /workflows?name=provision-7.0.6| json -a name
+    provision-7.0.6
+    # There isn't a single workflow matching name exactly:
+    [root@headnode (coal) ~]# sdc-workflow /workflows?name=provision| json -a name
+
+2. Approximate matches:
+
+    # workflow's name begins with provision:
+    [root@headnode (coal) ~]# sdc-workflow /workflows?name=provision*| json -a name
+    provision-7.0.6
+
+    # workflow's name contains provision:
+    [root@headnode (coal) ~]# sdc-workflow /workflows?name=*provision*| json -a name
+    provision-7.0.6
+    reprovision-7.0.0
+
+    # workflow's name finishes with '7.0.0' (actually, this matches wf version)
+    [root@headnode (coal) ~]# sdc-workflow /workflows?name=*7.0.0| json -a name
+    create-from-snapshot-7.0.0
+    start-7.0.0
+    stop-7.0.0
+    reboot-7.0.0
+    reprovision-7.0.0
+    update-7.0.0
+    destroy-7.0.0
+    snapshot-7.0.0
+    rollback-7.0.0
+    delete-snapshot-7.0.0
+    remove-nics-7.0.0
+
 ## Logging and log level changes
 
 Both, `wf-api` and `wf-runner` use Bunyan for logging. By default, both
