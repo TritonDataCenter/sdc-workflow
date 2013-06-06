@@ -5,12 +5,12 @@
     "wf-moray-backend": {
       "version": "0.9.1",
       "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#10ab8f1316cc9bba422ad023690d343a5b267513",
-      "resolved": "git+ssh://git@git.joyent.com/:node-workflow-moray-backend.git#10ab8f1316cc9bba422ad023690d343a5b267513",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#10ab8f1316cc9bba422ad023690d343a5b267513",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
           "from": "moray@git+ssh://git@git.joyent.com:node-moray.git#6248cbed48f0e86d9eb25bb708cc54ee99ddadde",
-          "resolved": "git+ssh://git@git.joyent.com/:node-moray.git#6248cbed48f0e86d9eb25bb708cc54ee99ddadde",
+          "resolved": "git+ssh://git@git.joyent.com:node-moray.git#6248cbed48f0e86d9eb25bb708cc54ee99ddadde",
           "dependencies": {
             "assert-plus": {
               "version": "0.1.2",
@@ -260,7 +260,7 @@
     "sdc-clients": {
       "version": "8.0.0",
       "from": "sdc-clients@git+ssh://git@git.joyent.com:node-sdc-clients.git#5bbc9f6",
-      "resolved": "git+ssh://git@git.joyent.com/:node-sdc-clients.git#5bbc9f6e05f57d15f46598ba0b1324bec6840832",
+      "resolved": "git+ssh://git@git.joyent.com:node-sdc-clients.git#5bbc9f6e05f57d15f46598ba0b1324bec6840832",
       "dependencies": {
         "assert-plus": {
           "version": "0.1.3",
