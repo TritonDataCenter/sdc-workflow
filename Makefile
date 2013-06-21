@@ -95,6 +95,7 @@ release: build docs
 		$(ROOT)/package.json \
 		$(ROOT)/npm-shrinkwrap.json \
 		$(ROOT)/wf-runner-quit.sh \
+		$(ROOT)/sapi_manifests \
 		$(ROOT)/smf \
 		$(TMPDIR)/root/opt/smartdc/workflow/
 	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
