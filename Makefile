@@ -60,7 +60,7 @@ include ./tools/mk/Makefile.smf.defs
 all: build
 
 .PHONY: build
-build: $(SMF_MANIFESTS) | $(TAP) $(REPO_DEPS)
+build: $(SMF_MANIFESTS) | $(TAP) $(REPO_DEPS) scripts
 	$(NPM) install && $(NPM) update
 
 $(TAP): | $(NPM_EXEC)
@@ -81,11 +81,13 @@ setup: | $(NPM_EXEC)
 release: build docs
 	@echo "Building $(RELEASE_TARBALL)"
 	@mkdir -p $(TMPDIR)/root/opt/smartdc/workflow
+	@mkdir -p $(TMPDIR)/root/opt/smartdc/boot
 	@mkdir -p $(TMPDIR)/site
 	@touch $(TMPDIR)/site/.do-not-delete-me
 	@mkdir -p $(TMPDIR)/root
 	@mkdir -p $(tmpdir)/root/opt/smartdc/workflow/ssl
 	cp -r   $(ROOT)/build \
+		$(ROOT)/boot\
 		$(ROOT)/etc \
 		$(ROOT)/lib \
 		$(ROOT)/wf-api.js \
@@ -98,6 +100,11 @@ release: build docs
 		$(ROOT)/sapi_manifests \
 		$(ROOT)/smf \
 		$(TMPDIR)/root/opt/smartdc/workflow/
+	mv $(TMPDIR)/root/opt/smartdc/workflow/build/scripts \
+	    $(TMPDIR)/root/opt/smartdc/workflow/boot
+	ln -s /opt/smartdc/workflow/boot/configure.sh \
+	    $(TMPDIR)/root/opt/smartdc/boot/configure.sh
+	chmod 755 $(TMPDIR)/root/opt/smartdc/workflow/boot/configure.sh
 	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
 	@rm -rf $(TMPDIR)
 
