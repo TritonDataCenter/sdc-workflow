@@ -2,7 +2,23 @@
     "backend": {
         "module": "wf-moray-backend",
         "opts": {
-            "url": "http://{{{MORAY_SERVICE}}}:2020"
+            "url": "http://{{{MORAY_SERVICE}}}:2020",
+            "extra_fields": {
+                "wf_workflows": {},
+                "wf_jobs": {
+                    "vm_uuid": {
+                        "type": "string",
+                        "index": true,
+                        "unique": false
+                    },
+                    "server_uuid": {
+                        "type": "string",
+                        "index": true,
+                        "unique": false
+                    }
+                },
+                "wf_jobs_info": {}
+            }
         }
     },
     "api": {
