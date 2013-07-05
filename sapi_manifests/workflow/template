@@ -18,11 +18,14 @@
                     }
                 },
                 "wf_jobs_info": {}
-            }
+            },
+            "version": 1
         }
     },
     "api": {
-        "port": 80
+        "port": 80,
+        "wf_extra_params": [],
+        "job_extra_params": ["vm_uuid", "server_uuid"]
     },
     "maxHttpSockets": 100,
     "logLevel": "info",
