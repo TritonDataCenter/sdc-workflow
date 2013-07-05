@@ -38,10 +38,10 @@ JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -o indent=4,doxygen,unparenthesized-return=0
 SMF_MANIFESTS_IN = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
 
-# The prebuilt sdcnode version we want. See
-# "tools/mk/Makefile.node_prebuilt.targ" for details.
+NODE_PREBUILT_VERSION=v0.8.25
+
 ifeq ($(shell uname -s),SunOS)
-	NODE_PREBUILT_VERSION=v0.8.22
+	NODE_PREBUILT_CC_VERSION=4.6.2
 	NODE_PREBUILT_TAG=zone
 endif
 
