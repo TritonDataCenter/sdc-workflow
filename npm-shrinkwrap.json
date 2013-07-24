@@ -4,8 +4,8 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.9.6",
-      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#0ffaaa02",
-      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#0ffaaa022aed93582112d5dc2e34cd095bb7d08c",
+      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#2d2bbc61",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#2d2bbc615b0eb0b947e447ef9733574bd752c56a",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -37,7 +37,6 @@
             "fast": {
               "version": "0.2.8",
               "from": "fast@0.2.8",
-              "resolved": "https://registry.npmjs.org/fast/-/fast-0.2.8.tgz",
               "dependencies": {
                 "assert-plus": {
                   "version": "0.1.2",
@@ -49,8 +48,7 @@
                 },
                 "crc": {
                   "version": "0.2.0",
-                  "from": "crc@0.2.0",
-                  "resolved": "https://registry.npmjs.org/crc/-/crc-0.2.0.tgz"
+                  "from": "crc@0.2.0"
                 },
                 "dtrace-provider": {
                   "version": "0.2.8",
@@ -59,7 +57,6 @@
                 "microtime": {
                   "version": "0.3.3",
                   "from": "microtime@0.3.3",
-                  "resolved": "https://registry.npmjs.org/microtime/-/microtime-0.3.3.tgz",
                   "dependencies": {
                     "bindings": {
                       "version": "1.0.0",
@@ -82,7 +79,6 @@
             "native-dns": {
               "version": "0.4.1",
               "from": "native-dns@0.4.1",
-              "resolved": "https://registry.npmjs.org/native-dns/-/native-dns-0.4.1.tgz",
               "dependencies": {
                 "buffercursor": {
                   "version": "0.0.8",
@@ -429,88 +425,6 @@
     "sigyan": {
       "version": "0.2.0",
       "from": "sigyan@0.2.0"
-    },
-    "tap": {
-      "version": "0.3.3",
-      "from": "tap@~0.3",
-      "dependencies": {
-        "inherits": {
-          "version": "1.0.0"
-        },
-        "yamlish": {
-          "version": "0.0.5"
-        },
-        "slide": {
-          "version": "1.1.4",
-          "from": "slide@*"
-        },
-        "runforcover": {
-          "version": "0.0.2",
-          "from": "runforcover@~0.0.2",
-          "dependencies": {
-            "bunker": {
-              "version": "0.1.2",
-              "from": "bunker@0.1.X",
-              "dependencies": {
-                "burrito": {
-                  "version": "0.2.12",
-                  "from": "burrito@>=0.2.5 <0.3",
-                  "dependencies": {
-                    "traverse": {
-                      "version": "0.5.2",
-                      "from": "traverse@~0.5.1"
-                    },
-                    "uglify-js": {
-                      "version": "1.1.1",
-                      "from": "uglify-js@~1.1.1"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "nopt": {
-          "version": "2.1.2",
-          "from": "nopt@~2",
-          "dependencies": {
-            "abbrev": {
-              "version": "1.0.4",
-              "from": "abbrev@1"
-            }
-          }
-        },
-        "mkdirp": {
-          "version": "0.3.5",
-          "from": "mkdirp@~0.3"
-        },
-        "difflet": {
-          "version": "0.2.6",
-          "from": "difflet@~0.2.0",
-          "dependencies": {
-            "traverse": {
-              "version": "0.6.3",
-              "from": "traverse@0.6.x"
-            },
-            "charm": {
-              "version": "0.1.2",
-              "from": "charm@0.1.x"
-            },
-            "deep-is": {
-              "version": "0.1.2",
-              "from": "deep-is@0.1.x"
-            }
-          }
-        },
-        "deep-equal": {
-          "version": "0.0.0",
-          "from": "deep-equal@~0.0.0"
-        },
-        "buffer-equal": {
-          "version": "0.0.0",
-          "from": "buffer-equal@~0.0.0"
-        }
-      }
     }
   }
 }
