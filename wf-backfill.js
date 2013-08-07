@@ -80,13 +80,18 @@ fs.readFile(config_file, 'utf8', function (err, data) {
 
                 jobs.forEach(function (job) {
                     if ((job.params.server_uuid && !job.server_uuid) ||
-                        (job.params.vm_uuid && !job.vm_uuid)) {
+                        (job.params.vm_uuid && !job.vm_uuid) ||
+                        (job.params.image_uuid && !job.image_uuid)) {
                         if (job.params.server_uuid) {
                             job.server_uuid = job.params.server_uuid;
                         }
 
                         if (job.params.vm_uuid) {
                             job.vm_uuid = job.params.vm_uuid;
+                        }
+
+                        if (job.params.image_uuid) {
+                            job.image_uuid = job.params.image_uuid;
                         }
 
                         backend.updateJob(job, function (err, j) {

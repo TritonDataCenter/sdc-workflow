@@ -15,6 +15,11 @@
                         "type": "string",
                         "index": true,
                         "unique": false
+                    },
+                    "image_uuid": {
+                        "type": "string",
+                        "index": true,
+                        "unique": false
                     }
                 },
                 "wf_jobs_info": {}
