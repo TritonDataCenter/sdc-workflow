@@ -4,8 +4,8 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.9.6",
-      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#2a79ad25",
-      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#2a79ad2509fd63925822766532c19dae2a8cd568",
+      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#74f4ca62",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#74f4ca6243e9bf5fc50f2223f19591ea08217377",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -14,8 +14,7 @@
           "dependencies": {
             "assert-plus": {
               "version": "0.1.4",
-              "from": "assert-plus@0.1.4",
-              "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.4.tgz"
+              "from": "assert-plus@0.1.4"
             },
             "backoff": {
               "version": "2.3.0",
@@ -80,6 +79,7 @@
             "native-dns": {
               "version": "0.4.1",
               "from": "native-dns@0.4.1",
+              "resolved": "https://registry.npmjs.org/native-dns/-/native-dns-0.4.1.tgz",
               "dependencies": {
                 "buffercursor": {
                   "version": "0.0.8",
@@ -103,7 +103,8 @@
             },
             "once": {
               "version": "1.1.1",
-              "from": "once@1.1.1"
+              "from": "once@1.1.1",
+              "resolved": "https://registry.npmjs.org/once/-/once-1.1.1.tgz"
             },
             "posix-getopt": {
               "version": "1.0.0",
@@ -135,6 +136,7 @@
     "bunyan": {
       "version": "0.20.0",
       "from": "bunyan@0.20.0",
+      "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-0.20.0.tgz",
       "dependencies": {
         "mv": {
           "version": "0.0.5",
@@ -208,11 +210,13 @@
         },
         "negotiator": {
           "version": "0.2.5",
-          "from": "negotiator@0.2.5"
+          "from": "negotiator@0.2.5",
+          "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.2.5.tgz"
         },
         "once": {
           "version": "1.1.1",
-          "from": "once@1.1.1"
+          "from": "once@1.1.1",
+          "resolved": "https://registry.npmjs.org/once/-/once-1.1.1.tgz"
         },
         "qs": {
           "version": "0.6.4",
@@ -220,12 +224,12 @@
         },
         "semver": {
           "version": "1.1.4",
-          "from": "semver@1.1.4",
-          "resolved": "https://registry.npmjs.org/semver/-/semver-1.1.4.tgz"
+          "from": "semver@1.1.4"
         },
         "spdy": {
           "version": "1.8.2",
-          "from": "spdy@1.8.2"
+          "from": "spdy@1.8.2",
+          "resolved": "https://registry.npmjs.org/spdy/-/spdy-1.8.2.tgz"
         },
         "verror": {
           "version": "1.3.6",
@@ -249,8 +253,7 @@
     },
     "async": {
       "version": "0.1.22",
-      "from": "async@0.1.22",
-      "resolved": "https://registry.npmjs.org/async/-/async-0.1.22.tgz"
+      "from": "async@0.1.22"
     },
     "vasync": {
       "version": "1.3.3",
@@ -387,7 +390,8 @@
         },
         "once": {
           "version": "1.1.1",
-          "from": "once@1.1.1"
+          "from": "once@1.1.1",
+          "resolved": "https://registry.npmjs.org/once/-/once-1.1.1.tgz"
         },
         "ssh-agent": {
           "version": "0.2.1",
