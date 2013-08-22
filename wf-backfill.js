@@ -81,7 +81,9 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                 jobs.forEach(function (job) {
                     if ((job.params.server_uuid && !job.server_uuid) ||
                         (job.params.vm_uuid && !job.vm_uuid) ||
-                        (job.params.image_uuid && !job.image_uuid)) {
+                        (job.params.image_uuid && !job.image_uuid) ||
+                        (job.params.creator_uuid && !job.creator_uuid) ||
+                        (job.params.origin && !job.origin)) {
                         if (job.params.server_uuid) {
                             job.server_uuid = job.params.server_uuid;
                         }
@@ -92,6 +94,14 @@ fs.readFile(config_file, 'utf8', function (err, data) {
 
                         if (job.params.image_uuid) {
                             job.image_uuid = job.params.image_uuid;
+                        }
+
+                        if (job.params.creator_uuid) {
+                            job.creator_uuid = job.params.creator_uuid;
+                        }
+
+                        if (job.params.origin) {
+                            job.origin = job.params.origin;
                         }
 
                         backend.updateJob(job, function (err, j) {

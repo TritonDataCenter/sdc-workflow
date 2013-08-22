@@ -20,6 +20,16 @@
                         "type": "string",
                         "index": true,
                         "unique": false
+                    },
+                    "creator_uuid": {
+                        "type": "string",
+                        "index": true,
+                        "unique": false
+                    },
+                    "origin": {
+                        "type": "string",
+                        "index": true,
+                        "unique": false
                     }
                 },
                 "wf_jobs_info": {}
