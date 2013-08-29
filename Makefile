@@ -57,7 +57,7 @@ include ./tools/mk/Makefile.smf.defs
 # Repo-specific targets
 #
 .PHONY: all
-all: build
+all: build sdc-scripts
 
 .PHONY: build
 build: $(SMF_MANIFESTS) | $(TAP) $(REPO_DEPS)
@@ -98,6 +98,12 @@ release: build docs
 		$(ROOT)/sapi_manifests \
 		$(ROOT)/smf \
 		$(TMPDIR)/root/opt/smartdc/workflow/
+	@mkdir -p $(TMPDIR)/root/opt/smartdc/sdc-boot/scripts
+	cp $(ROOT)/sdc-boot/*.sh \
+	    $(TMPDIR)/root/opt/smartdc/sdc-boot/
+	mv $(ROOT)/deps/sdc-scripts/*.sh \
+	    $(TMPDIR)/root/opt/smartdc/sdc-boot/scripts/
+
 	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
 	@rm -rf $(TMPDIR)
 
