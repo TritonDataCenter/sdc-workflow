@@ -30,6 +30,11 @@
                         "type": "string",
                         "index": true,
                         "unique": false
+                    },
+                    "task": {
+                        "type": "string",
+                        "index": true,
+                        "unique": false
                     }
                 },
                 "wf_jobs_info": {}

@@ -83,7 +83,8 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                         (job.params.vm_uuid && !job.vm_uuid) ||
                         (job.params.image_uuid && !job.image_uuid) ||
                         (job.params.creator_uuid && !job.creator_uuid) ||
-                        (job.params.origin && !job.origin)) {
+                        (job.params.origin && !job.origin) ||
+                        (job.params.task && !job.task)) {
                         if (job.params.server_uuid) {
                             job.server_uuid = job.params.server_uuid;
                         }
@@ -102,6 +103,10 @@ fs.readFile(config_file, 'utf8', function (err, data) {
 
                         if (job.params.origin) {
                             job.origin = job.params.origin;
+                        }
+
+                        if (job.params.task) {
+                            job.task = job.params.task;
                         }
 
                         backend.updateJob(job, function (err, j) {
