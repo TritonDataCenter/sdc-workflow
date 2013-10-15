@@ -10,7 +10,6 @@ set -o xtrace
 PATH=/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 
 role=workflow
-app_name=$role
 # Local SAPI manifests:
 CONFIG_AGENT_LOCAL_MANIFESTS_DIRS=/opt/smartdc/$role
 
@@ -29,10 +28,12 @@ echo "" >>/root/.profile
 echo "export PATH=\$PATH:/opt/smartdc/$role/build/node/bin:/opt/smartdc/$role/node_modules/.bin" >>/root/.profile
 
 echo "Adding log rotation"
-logadm -w wf-api -C 48 -s 100m -p 1h \
-    /var/svc/log/smartdc-application-wf-api:default.log
-logadm -w wf-runner -C 48 -s 100m -p 1h \
-    /var/svc/log/smartdc-application-wf-runner:default.log
+sdc_log_rotation_add amon-agent /var/svc/log/*amon-agent*.log 1g
+sdc_log_rotation_add config-agent /var/svc/log/*config-agent*.log 1g
+sdc_log_rotation_add registrar /var/svc/log/*registrar*.log 1g
+sdc_log_rotation_add wf-api /var/svc/log/*wf-api*.log 1g
+sdc_log_rotation_add wf-runner /var/svc/log/*wf-runner*.log 1g
+sdc_log_rotation_setup_end
 
 # All done, run boilerplate end-of-setup
 sdc_setup_complete
