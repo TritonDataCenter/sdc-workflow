@@ -9,11 +9,12 @@
       "url" : "git+ssh://git@git.joyent.com:workflow.git"
   },
   "dependencies": {
-    "wf-moray-backend": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#374cbf",
-    "wf": "git://github.com/kusor/node-workflow.git#e5f0be",
+    "wf-moray-backend": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#9f7bb7",
+    "wf": "git://github.com/kusor/node-workflow.git#69ced8",
     "bunyan": "0.20.0",
     "restify": "2.5.1",
     "node-uuid": "1.4.0",
+    "libuuid": "0.1.2",
     "async": "0.1.22",
     "vasync": "1.3.3",
     "sdc-clients": "git+ssh://git@git.joyent.com:node-sdc-clients.git#5bbc9f6",

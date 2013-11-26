@@ -38,6 +38,7 @@
                 "urlModule": "url",
                 "http": "http",
                 "uuid": "node-uuid",
+                "libuuid": "libuuid",
                 "restify": "restify",
                 "async": "async",
                 "sdcClients": "sdc-clients",
