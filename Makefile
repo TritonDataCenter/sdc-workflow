@@ -30,7 +30,7 @@ endif
 #
 # Files
 #
-DOC_FILES	 = index.restdown
+DOC_FILES	 = index.restdown api.restdown workflow.restdown
 JS_FILES	:= $(shell ls *.js) $(shell find lib -name '*.js')
 JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
