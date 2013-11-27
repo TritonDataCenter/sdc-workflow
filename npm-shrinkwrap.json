@@ -4,8 +4,8 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.9.7",
-      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#9f7bb7",
-      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#9f7bb75c3a7f3bc5380dfd0118875a79707e9255",
+      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#8f5e93",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#8f5e932c08905e23bbca4be58a2425d16e156deb",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -14,8 +14,7 @@
           "dependencies": {
             "assert-plus": {
               "version": "0.1.4",
-              "from": "assert-plus@0.1.4",
-              "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.4.tgz"
+              "from": "assert-plus@0.1.4"
             },
             "backoff": {
               "version": "2.3.0",
@@ -24,7 +23,6 @@
             "bunyan": {
               "version": "0.22.0",
               "from": "bunyan@0.22.0",
-              "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-0.22.0.tgz",
               "dependencies": {
                 "mv": {
                   "version": "0.0.5",
@@ -39,7 +37,6 @@
             "fast": {
               "version": "0.3.3",
               "from": "fast@0.3.3",
-              "resolved": "https://registry.npmjs.org/fast/-/fast-0.3.3.tgz",
               "dependencies": {
                 "crc": {
                   "version": "0.2.1",
@@ -109,6 +106,10 @@
                 }
               }
             },
+            "libuuid": {
+              "version": "0.1.2",
+              "from": "libuuid@0.1.2"
+            },
             "once": {
               "version": "1.2.0",
               "from": "once@1.2.0"
@@ -137,8 +138,8 @@
     },
     "wf": {
       "version": "0.9.7",
-      "from": "wf@git://github.com/kusor/node-workflow.git#69ced8",
-      "resolved": "git://github.com/kusor/node-workflow.git#69ced845ce0f8630d9d7509143ae3204c68780ae",
+      "from": "wf@git://github.com/kusor/node-workflow.git#138fd4",
+      "resolved": "git://github.com/kusor/node-workflow.git#138fd4ebddf099722f93415973173b2d30ddb343",
       "dependencies": {
         "backoff": {
           "version": "1.2.0",
@@ -268,10 +269,6 @@
       "version": "1.4.0",
       "from": "node-uuid@1.4.0"
     },
-    "libuuid": {
-      "version": "0.1.2",
-      "from": "libuuid@0.1.2"
-    },
     "async": {
       "version": "0.1.22",
       "from": "async@0.1.22"
@@ -317,8 +314,7 @@
       "dependencies": {
         "assert-plus": {
           "version": "0.1.3",
-          "from": "assert-plus@0.1.3",
-          "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.3.tgz"
+          "from": "assert-plus@0.1.3"
         },
         "backoff": {
           "version": "2.3.0",
@@ -327,7 +323,6 @@
         "bunyan": {
           "version": "0.21.3",
           "from": "bunyan@0.21.3",
-          "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-0.21.3.tgz",
           "dependencies": {
             "mv": {
               "version": "0.0.5",
@@ -341,8 +336,7 @@
         },
         "clone": {
           "version": "0.1.8",
-          "from": "clone@0.1.8",
-          "resolved": "https://registry.npmjs.org/clone/-/clone-0.1.8.tgz"
+          "from": "clone@0.1.8"
         },
         "http-signature": {
           "version": "0.9.11",
@@ -365,7 +359,6 @@
         "ldapjs": {
           "version": "0.6.3",
           "from": "ldapjs@0.6.3",
-          "resolved": "https://registry.npmjs.org/ldapjs/-/ldapjs-0.6.3.tgz",
           "dependencies": {
             "asn1": {
               "version": "0.1.11",
@@ -405,8 +398,7 @@
             },
             "pooling": {
               "version": "0.4.4",
-              "from": "pooling@0.4.4",
-              "resolved": "https://registry.npmjs.org/pooling/-/pooling-0.4.4.tgz"
+              "from": "pooling@0.4.4"
             }
           }
         },
@@ -421,7 +413,6 @@
         "ssh-agent": {
           "version": "0.2.1",
           "from": "ssh-agent@0.2.1",
-          "resolved": "https://registry.npmjs.org/ssh-agent/-/ssh-agent-0.2.1.tgz",
           "dependencies": {
             "ctype": {
               "version": "0.5.0",
