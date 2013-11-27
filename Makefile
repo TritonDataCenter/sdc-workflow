@@ -72,7 +72,7 @@ CLEAN_FILES += $(TAP) ./node_modules/tap
 
 ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := $(NAME)-pkg-$(STAMP).tar.bz2
-TMPDIR                  := /tmp/$(STAMP)
+RELSTAGEDIR             := /tmp/$(STAMP)
 
 .PHONY: setup
 setup: | $(NPM_EXEC)
@@ -81,10 +81,10 @@ setup: | $(NPM_EXEC)
 .PHONY: release
 release: build docs
 	@echo "Building $(RELEASE_TARBALL)"
-	@mkdir -p $(TMPDIR)/root/opt/smartdc/workflow
-	@mkdir -p $(TMPDIR)/site
-	@touch $(TMPDIR)/site/.do-not-delete-me
-	@mkdir -p $(TMPDIR)/root
+	@mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/workflow
+	@mkdir -p $(RELSTAGEDIR)/site
+	@touch $(RELSTAGEDIR)/site/.do-not-delete-me
+	@mkdir -p $(RELSTAGEDIR)/root
 	@mkdir -p $(tmpdir)/root/opt/smartdc/workflow/ssl
 	cp -r   $(ROOT)/build \
 		$(ROOT)/etc \
@@ -98,12 +98,12 @@ release: build docs
 		$(ROOT)/wf-runner-quit.sh \
 		$(ROOT)/sapi_manifests \
 		$(ROOT)/smf \
-		$(TMPDIR)/root/opt/smartdc/workflow/
-	mkdir -p $(TMPDIR)/root/opt/smartdc/boot
-	cp -R $(ROOT)/deps/sdc-scripts/* $(TMPDIR)/root/opt/smartdc/boot/
-	cp -R $(ROOT)/boot/* $(TMPDIR)/root/opt/smartdc/boot/
-	(cd $(TMPDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
-	@rm -rf $(TMPDIR)
+		$(RELSTAGEDIR)/root/opt/smartdc/workflow/
+	mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/boot
+	cp -R $(ROOT)/deps/sdc-scripts/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
+	cp -R $(ROOT)/boot/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
+	(cd $(RELSTAGEDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
+	@rm -rf $(RELSTAGEDIR)
 
 
 .PHONY: publish
