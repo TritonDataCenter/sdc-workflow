@@ -4,8 +4,8 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.9.7",
-      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#e3c266",
-      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#e3c26630fee92155d47581216923845391a16677",
+      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#c56f6dc",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#c56f6dc36d4ebc4e4c4cb0d82be0d4b1d85c4ae3",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -138,8 +138,8 @@
     },
     "wf": {
       "version": "0.9.7",
-      "from": "wf@git://github.com/kusor/node-workflow.git#138fd4",
-      "resolved": "git://github.com/kusor/node-workflow.git#138fd4ebddf099722f93415973173b2d30ddb343",
+      "from": "wf@git://github.com/kusor/node-workflow.git#5766d0",
+      "resolved": "git://github.com/kusor/node-workflow.git#5766d0310091e85275cf4bbce9a076a6d5b6256a",
       "dependencies": {
         "backoff": {
           "version": "1.2.0",
@@ -239,8 +239,7 @@
         },
         "qs": {
           "version": "0.6.4",
-          "from": "qs@0.6.4",
-          "resolved": "https://registry.npmjs.org/qs/-/qs-0.6.4.tgz"
+          "from": "qs@0.6.4"
         },
         "semver": {
           "version": "1.1.4",
@@ -248,8 +247,7 @@
         },
         "spdy": {
           "version": "1.8.2",
-          "from": "spdy@1.8.2",
-          "resolved": "https://registry.npmjs.org/spdy/-/spdy-1.8.2.tgz"
+          "from": "spdy@1.8.2"
         },
         "verror": {
           "version": "1.3.6",
@@ -273,8 +271,7 @@
     },
     "async": {
       "version": "0.1.22",
-      "from": "async@0.1.22",
-      "resolved": "https://registry.npmjs.org/async/-/async-0.1.22.tgz"
+      "from": "async@0.1.22"
     },
     "vasync": {
       "version": "1.3.3",
