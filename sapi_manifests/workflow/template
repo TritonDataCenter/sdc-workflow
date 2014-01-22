@@ -71,6 +71,7 @@
             "napiUrl": "http://{{{NAPI_SERVICE}}}",
             "cnapiUrl": "http://{{{CNAPI_SERVICE}}}",
             "vmapiUrl": "http://{{{VMAPI_SERVICE}}}",
+            "papiUrl": "http://{{{PAPI_SERVICE}}}",
             "imgapiUrl": "http://{{{IMGAPI_SERVICE}}}",
             "fwapiUrl": "http://{{{FWAPI_SERVICE}}}"
         }
