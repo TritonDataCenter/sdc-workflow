@@ -4,8 +4,8 @@
   "dependencies": {
     "wf-moray-backend": {
       "version": "0.9.7",
-      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#1de64f",
-      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#1de64fc66df5eeb74ccedc3f8fdee98a9b7a4cad",
+      "from": "wf-moray-backend@git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#dd9f32",
+      "resolved": "git+ssh://git@git.joyent.com:node-workflow-moray-backend.git#dd9f324299df01e518d67da67b0d8785b86a842b",
       "dependencies": {
         "moray": {
           "version": "1.0.0",
@@ -135,9 +135,9 @@
       }
     },
     "wf": {
-      "version": "0.9.8",
-      "from": "wf@git://github.com/kusor/node-workflow.git#55c755",
-      "resolved": "git://github.com/kusor/node-workflow.git#55c75509b8b08ba7c9194e68fa36f5e949ad44a4",
+      "version": "0.9.9",
+      "from": "wf@git://github.com/kusor/node-workflow.git#4e9ac3",
+      "resolved": "git://github.com/kusor/node-workflow.git#4e9ac31c23b0258c4d17eb4149cf82b27977f746",
       "dependencies": {
         "backoff": {
           "version": "1.2.0",
@@ -173,8 +173,7 @@
       "dependencies": {
         "assert-plus": {
           "version": "0.1.2",
-          "from": "assert-plus@0.1.2",
-          "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.2.tgz"
+          "from": "assert-plus@0.1.2"
         },
         "backoff": {
           "version": "2.2.0",
@@ -230,8 +229,7 @@
         },
         "negotiator": {
           "version": "0.2.5",
-          "from": "negotiator@0.2.5",
-          "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.2.5.tgz"
+          "from": "negotiator@0.2.5"
         },
         "once": {
           "version": "1.1.1",
@@ -344,8 +342,7 @@
           "dependencies": {
             "assert-plus": {
               "version": "0.1.2",
-              "from": "assert-plus@0.1.2",
-              "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.2.tgz"
+              "from": "assert-plus@0.1.2"
             },
             "asn1": {
               "version": "0.1.11",
@@ -367,8 +364,7 @@
             },
             "assert-plus": {
               "version": "0.1.2",
-              "from": "assert-plus@0.1.2",
-              "resolved": "https://registry.npmjs.org/assert-plus/-/assert-plus-0.1.2.tgz"
+              "from": "assert-plus@0.1.2"
             },
             "buffertools": {
               "version": "1.1.0",
