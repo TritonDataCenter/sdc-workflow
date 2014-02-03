@@ -16,7 +16,7 @@
     "node-uuid": "1.4.0",
     "async": "0.1.22",
     "vasync": "1.3.3",
-    "sdc-clients": "git+ssh://git@git.joyent.com:node-sdc-clients.git#ac654f7",
+    "sdc-clients": "git+ssh://git@git.joyent.com:node-sdc-clients.git#fc67522c98e1e108dc568572cdf7075d65ed85d5",
     "verror": "1.3.5",
     "sigyan": "0.2.0"
   },
