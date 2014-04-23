@@ -38,7 +38,7 @@ JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -o indent=4,doxygen,unparenthesized-return=0
 SMF_MANIFESTS_IN = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in
 
-NODE_PREBUILT_VERSION=v0.8.25
+NODE_PREBUILT_VERSION=v0.8.26
 
 ifeq ($(shell uname -s),SunOS)
 	NODE_PREBUILT_TAG=zone
