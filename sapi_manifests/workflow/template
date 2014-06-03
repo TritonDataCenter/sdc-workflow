@@ -45,7 +45,10 @@
     "api": {
         "port": 80,
         "wf_extra_params": [],
-        "job_extra_params": ["vm_uuid", "server_uuid"]
+        "job_extra_params": [
+            "vm_uuid", "server_uuid", "image_uuid",
+            "creator_uuid", "origin", "task"
+        ]
     },
     "maxHttpSockets": 100,
     "logLevel": "info",

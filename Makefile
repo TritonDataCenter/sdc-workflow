@@ -92,6 +92,7 @@ release: build docs
 		$(ROOT)/wf-api.js \
 		$(ROOT)/wf-runner.js \
 		$(ROOT)/wf-console.js \
+		$(ROOT)/wf-backfill.js \
 		$(ROOT)/node_modules \
 		$(ROOT)/package.json \
 		$(ROOT)/npm-shrinkwrap.json \
