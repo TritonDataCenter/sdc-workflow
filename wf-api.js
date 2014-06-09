@@ -76,10 +76,5 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             }
         }, 1000);
 
-        // Increase/decrease loggers levels using SIGUSR2/SIGUSR1:
-        var sigyan = require('sigyan');
-        sigyan.add([api.log, api.server.log, api.backend.log,
-                api.backend.client.log]);
-
     }
 });

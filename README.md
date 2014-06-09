@@ -81,18 +81,11 @@ If you want to see the Bunyan output pretty printed to stdout:
     tail -f `svcs -L wf-api` | ./node_modules/.bin/bunyan
     tail -f `svcs -L wf-runner` | ./node_modules/.bin/bunyan
 
-By default, both services log level is `INFO`. This can be easily increased /
-decreased by sending the processes SIGUSR2/SIGUSR1 signals.
+By default, both services log level is `INFO`. This can be easily increased
+using `bunyan -p` to get more verbose logging for each of the processes:
 
-In order to get the process number of the services:
-
-    svcs -p wf-api
-    svcs -p wf-runner
-
-Then, you can change log levels using the previous process PID:
-
-    kill -s SIGUSR2 <PID>
-    kill -s SIGUSR1 <PID>
+    bunyan -p wf-api
+    bunyan -p wf-runner
 
 # Inspecting moray backend from the command line
 

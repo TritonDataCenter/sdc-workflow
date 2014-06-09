@@ -74,10 +74,6 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             runner.run();
             log.info('Workflow Runner up!');
         });
-        // Increase/decrease loggers levels using SIGUSR2/SIGUSR1:
-        var sigyan = require('sigyan');
-        sigyan.add([runner.log, runner.backend.log,
-              runner.backend.client.log]);
 
         process.on('SIGINT', function () {
             console.log('Got SIGINT. Waiting for child processes to finish');
