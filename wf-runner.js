@@ -49,6 +49,16 @@ fs.readFile(config_file, 'utf8', function (err, data) {
 
         MAX_RETRIES = config.maxInitRetries || 10;
 
+        // Poll less frequently in COAL:
+        if (config.coal && config.coal === 'true') {
+            config.runner.run_interval = 5000;
+        }
+        // Prevent it to run with previous values, which were in
+        // seconds:
+        if (config.runner.run_interval < 1000) {
+            config.runner.run_interval = 1000;
+        }
+
         runner = wf.Runner(config);
         log = runner.log;
         var init = function (cb) {
