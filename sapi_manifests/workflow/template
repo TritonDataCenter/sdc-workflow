@@ -53,6 +53,7 @@
     "maxHttpSockets": 100,
     "logLevel": "info",
     "maxInitRetries": 50,
+    "coal": "{{{coal}}}",
     "runner": {
         "identifier": "{{{ZONE_UUID}}}",
         "forks": {{{WORKFLOW_NUM_FORKS}}},
