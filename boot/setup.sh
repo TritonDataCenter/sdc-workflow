@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 # -*- mode: shell-script; fill-column: 80; -*-
 #
-# Copyright (c) 2013 Joyent Inc., All rights reserved.
+# Copyright (c) 2014 Joyent Inc., All rights reserved.
 #
 
 export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
@@ -27,12 +27,23 @@ mkdir -p /opt/smartdc/$role/etc
 echo "" >>/root/.profile
 echo "export PATH=/opt/smartdc/$role/build/node/bin:/opt/smartdc/$role/node_modules/.bin:/opt/smartdc/$role/node_modules/wf-moray-backend/node_modules/.bin:\$PATH" >>/root/.profile
 
+
+$(/opt/local/bin/gsed -i"" -e "s/@@PREFIX@@/\/opt\/smartdc\/workflow/g" /opt/smartdc/$role/smf/manifests/wf-api.xml)
+$(/opt/local/bin/gsed -i"" -e "s/@@PREFIX@@/\/opt\/smartdc\/workflow/g" /opt/smartdc/$role/smf/manifests/wf-runner.xml)
+$(/opt/local/bin/gsed -i"" -e "s/@@PREFIX@@/\/opt\/smartdc\/workflow/g" /opt/smartdc/$role/smf/manifests/wf-backfill.xml)
+
+echo "Importing SMF Manifests"
+$(/usr/sbin/svccfg import /opt/smartdc/$role/smf/manifests/wf-runner.xml)
+$(/usr/sbin/svccfg import /opt/smartdc/$role/smf/manifests/wf-api.xml)
+$(/usr/sbin/svccfg import /opt/smartdc/$role/smf/manifests/wf-backfill.xml)
+
 echo "Adding log rotation"
 sdc_log_rotation_add amon-agent /var/svc/log/*amon-agent*.log 1g
 sdc_log_rotation_add config-agent /var/svc/log/*config-agent*.log 1g
 sdc_log_rotation_add registrar /var/svc/log/*registrar*.log 1g
 sdc_log_rotation_add wf-api /var/svc/log/*wf-api*.log 1g
 sdc_log_rotation_add wf-runner /var/svc/log/*wf-runner*.log 1g
+sdc_log_rotation_add wf-runner /var/svc/log/*wf-backfill*.log 1g
 sdc_log_rotation_setup_end
 
 # All done, run boilerplate end-of-setup

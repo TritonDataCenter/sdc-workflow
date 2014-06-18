@@ -45,7 +45,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             log = new Logger(config.logger),
             backend = new Backend(config.backend.opts);
 
-        backend.init(function (err) {
+        backend.init(false, function (err) {
             if (err) {
                 log.error({err: err}, 'Error initializing backend');
                 process.exit(1);

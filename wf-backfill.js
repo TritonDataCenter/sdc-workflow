@@ -45,8 +45,10 @@ fs.readFile(config_file, 'utf8', function (err, data) {
     var Backend = require(config.backend.module);
     log = new bunyan(config.logger);
     var backend = new Backend(config.backend.opts);
+    var bucketVersion, bu;
 
-    backend.init(function (err) {
+
+    backend.init(false, function (err) {
         if (err) {
             log.error({err: err}, 'Error initializing backend');
             process.exit(1);
@@ -126,6 +128,11 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                                 },
                                 util.format('Job %d of %d updated',
                                     PROCESSED, TOTAL));
+                                if (PROCESSED === TOTAL) {
+                                    log.info('%d JOBS PROCESSED. DONE!', TOTAL);
+                                    // should make the process exit here, though
+                                    process.exit(0);
+                                }
                             }
                         });
                     } else {
@@ -155,11 +162,56 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                 return processJobs(PROCESSED, JOBS_LIMIT, processCb);
             } else {
                 log.info('%d JOBS PROCESSED. DONE!', TOTAL);
-                return (true);
+                // should make the process exit here, though
+                process.exit(0);
+                // return (true);
             }
         }
 
-        processJobs(0, JOBS_LIMIT, processCb);
+
+        // Will return cb(err) on error, cb(null, true) if the update needs
+        // to run, cb(null, false) if there is no need to run it.
+        function _needUpdate(cb) {
+            var counter = 0;
+            var req = backend.client.sql('select count (_id) from wf_jobs ' +
+                    'as counter where task is null and vm_uuid is not null;');
+            req.on('record', function (r) {
+                if (r) {
+                    counter = parseInt(r.count, 10);
+                }
+            });
+            req.on('error', function (err) {
+                return cb(err);
+            });
+            req.on('end', function () {
+                return cb(null, (counter !== 0));
+            });
+        }
+
+        backend.client.getBucket('wf_jobs', function (err, bucket) {
+            if (err) {
+                log.error({err: err}, 'Error retrieving bucket version');
+                process.exit(1);
+            }
+            bucketVersion = bucket.options.version;
+            bu = bucket;
+
+            _needUpdate(function (err, needed) {
+                if (err) {
+                    log.error({err: err},
+                        'Error checking if update was needed');
+                    process.exit(1);
+                }
+
+                if (needed) {
+                    processJobs(0, JOBS_LIMIT, processCb);
+                } else {
+                    log.info('No need to backfill jobs');
+                    process.exit(0);
+                }
+            });
+
+        });
     });
 
 });
