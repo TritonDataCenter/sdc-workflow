@@ -59,6 +59,7 @@
         "forks": {{{WORKFLOW_NUM_FORKS}}},
         "do_fork": false,
         "run_interval": {{{WORKFLOW_RUN_INTERVAL}}},
+        "activity_interval": 30000,
         "sandbox": {
             "modules": {
                 "urlModule": "url",
