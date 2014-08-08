@@ -62,7 +62,7 @@ all: build sdc-scripts
 
 .PHONY: build
 build: $(SMF_MANIFESTS) | $(TAP) $(REPO_DEPS)
-	$(NPM) install && $(NPM) update
+	$(NPM) install
 
 $(TAP): | $(NPM_EXEC)
 	$(NPM) install
