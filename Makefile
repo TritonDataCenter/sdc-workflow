@@ -31,6 +31,7 @@ endif
 # Files
 #
 DOC_FILES	 = index.restdown api.restdown workflow.restdown
+RESTDOWN_FLAGS   = --brand-dir=deps/restdown-brand-remora
 JS_FILES	:= $(shell ls *.js) $(shell find lib -name '*.js')
 JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
