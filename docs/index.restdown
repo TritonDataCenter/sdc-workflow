@@ -19,25 +19,13 @@ This repo contains the SDC7 installer for Workflow API and Runners,
 with specific modules, configurations and the required tools to
 build and setup workflow zones either into SDC Headnode or Compute Nodes.
 
-Please, note this is not the Open Source Version of `wf` and backend modules.
-Those are publicly available at github. See
-[node-workflow repo on github](https://github.com/kusor/node-workflow).
-
-Documentation for the Open Source `node-workflow` project is publicly available
-for both [Terminology and system description](http://kusor.github.io/node-workflow/ "This includes how wf-runners work") and the [Workflow REST API](http://kusor.github.io/node-workflow/workflowapi.html).
+Please, note this documentation is not about the general purpose `wf` and backend modules.
+Documentation for these is publicly available at [Terminology and system description](http://kusor.github.io/node-workflow/ "This includes how wf-runners work") and the [Workflow REST API](http://kusor.github.io/node-workflow/workflowapi.html).
 
 A copy of such documents is also available on this server for convenience:
 
 - [Workflow REST API](api.html)
 - [Terminology and system description](workflow.html)
-
-# Project details
-
-- Repository: `git@git.joyent.com:workflow.git`
-- Browsing: [https://mo.joyent.com/workflow](https://mo.joyent.com/workflow)
-- Who: Pedro P. Candel
-- Docs: [https://mo.joyent.com/docs/workflow](https://mo.joyent.com/docs/workflow)
-- Tickets/bugs: [https://devhub.joyent.com/jira/browse/WORKFLOW](https://devhub.joyent.com/jira/browse/WORKFLOW)
 
 # Developer Guide
 
@@ -278,18 +266,11 @@ If you want to see the Bunyan output pretty printed to stdout:
     tail -f `svcs -L wf-api` | ./node_modules/.bin/bunyan
     tail -f `svcs -L wf-runner` | ./node_modules/.bin/bunyan
 
-By default, both services log level is `INFO`. This can be easily increased /
-decreased by sending the processes SIGUSR2/SIGUSR1 signals.
+By default, both services log level is `INFO`. This can be easily increased
+using `bunyan -p` to get more verbose logging for each of the processes:
 
-In order to get the process number of the services:
-
-    svcs -p wf-api
-    svcs -p wf-runner
-
-Then, you can change log levels using the previous process PID:
-
-    kill -s SIGUSR2 <PID>
-    kill -s SIGUSR1 <PID>
+    bunyan -p wf-api
+    bunyan -p wf-runner
 
 ## Inspecting moray backend from the cli
 

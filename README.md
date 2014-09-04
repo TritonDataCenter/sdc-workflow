@@ -8,74 +8,19 @@
     Copyright (c) 2014, Joyent, Inc.
 -->
 
-# SDC7 Workflow API and Runners
+# sdc-workflow
 
-Repository: <git@git.joyent.com:workflow.git>
-Browsing: <https://mo.joyent.com/workflow>
-Who: Pedro P. Candel
-Docs: <https://mo.joyent.com/docs/workflow>
-Tickets/bugs: <https://devhub.joyent.com/jira/browse/WORKFLOW>
+This repository is part of the Joyent SmartDataCenter project (SDC).  For 
+contribution guidelines, issues, and general documentation, visit the main
+[SDC](http://github.com/joyent/sdc) project page.
 
-# Documentation:
-
-Documentation for the Open Source `node-workflow` project is publicly available
-for both [Terminology and system description](http://kusor.github.io/node-workflow/ "This includes how wf-runners work") and the [Workflow REST API](http://kusor.github.io/node-workflow/workflowapi.html).
-
-# Overview
+## Overview
 
 This repo contains the SDC7 installer for Workflow API and Runners,
 with specific modules, configurations and the required tools to
 build and setup workflow zones either into SDC Headnode or Compute Nodes.
 
-# Repository
-
-    deps/               Git submodules and/or commited 3rd-party deps should go
-                        here. See "node_modules/" for node.js deps.
-    docs/               Project docs (restdown)
-    lib/                Source files.
-    node_modules/       Node.js deps populated at build time.
-                        See npm shrinkwrap.
-    pkg/                Package lifecycle scripts
-    smf/manifests       SMF manifests
-    smf/methods         SMF method scripts
-    test/               Test suite (using node-tap)
-    tools/              Miscellaneous dev/upgrade/deployment tools and data.
-    Makefile
-    package.json        npm module info (holds the project version)
-    npm-shrinkwrap.json shrinkwrapped npm dependencies
-    README.md
-
-
-# Development
-
-Checkout the repo and init submodules:
-
-    git clone git@git.joyent.com:workflow.git
-    cd workflow
-    git submodule update --init
-    make all
-
-Copy configuration at `etc/config.json.coal` to `etc/config.json` and edit
-properly to match your PostgreSQL settings. Remember that you need to create
-a PostgreSQL database called `node_workflow`, this app will not create it.
-
-Run a Workflow runner:
-
-    node wf-runner.js
-
-To run the Workflow API server:
-
-    node wf-api.js
-
-Note that this project uses npm shrinkwrap to install NPM modules.
-
-To update the documentation, edit "docs/index.restdown" and run `make docs`
-to update "docs/index.html".
-
-Before commiting/pushing run `make prepush` and, if possible, get a code
-review.
-
-# Logging and log level changes
+## Logging and log level changes
 
 Both, `wf-api` and `wf-runner` use Bunyan for logging. By default, both
 processes are logging to the default SMF stdout file.
@@ -97,7 +42,7 @@ using `bunyan -p` to get more verbose logging for each of the processes:
     bunyan -p wf-api
     bunyan -p wf-runner
 
-# Inspecting moray backend from the command line
+## Inspecting moray backend from the command line
 
 Besides the default services, an additional `wf-console.js` script is provided,
 which can be initialized and used to directly talk to the moray backend the same
