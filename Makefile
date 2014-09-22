@@ -39,6 +39,7 @@ endif
 # Files
 #
 DOC_FILES	 = index.md api.md workflow.md
+EXTRA_DOC_DEPS += deps/restdown-brand-remora/.git
 RESTDOWN_FLAGS   = --brand-dir=deps/restdown-brand-remora
 JS_FILES	:= $(shell ls *.js) $(shell find lib -name '*.js')
 JSL_CONF_NODE	 = tools/jsl.node.conf
