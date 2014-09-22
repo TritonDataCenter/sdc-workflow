@@ -53,7 +53,6 @@ fs.readFile(config_file, 'utf8', function (err, data) {
     var Backend = require(config.backend.module);
     log = new bunyan(config.logger);
     var backend = new Backend(config.backend.opts);
-    var bucketVersion, bu;
 
 
     backend.init(false, function (err) {
@@ -172,7 +171,7 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                 log.info('%d JOBS PROCESSED. DONE!', TOTAL);
                 // should make the process exit here, though
                 process.exit(0);
-                // return (true);
+                return (true);
             }
         }
 
@@ -201,8 +200,6 @@ fs.readFile(config_file, 'utf8', function (err, data) {
                 log.error({err: err}, 'Error retrieving bucket version');
                 process.exit(1);
             }
-            bucketVersion = bucket.options.version;
-            bu = bucket;
 
             _needUpdate(function (err, needed) {
                 if (err) {
