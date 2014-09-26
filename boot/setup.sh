@@ -49,7 +49,7 @@ sdc_log_rotation_add config-agent /var/svc/log/*config-agent*.log 1g
 sdc_log_rotation_add registrar /var/svc/log/*registrar*.log 1g
 sdc_log_rotation_add wf-api /var/svc/log/*wf-api*.log 1g
 sdc_log_rotation_add wf-runner /var/svc/log/*wf-runner*.log 1g
-sdc_log_rotation_add wf-runner /var/svc/log/*wf-backfill*.log 1g
+sdc_log_rotation_add wf-backfill /var/svc/log/*wf-backfill*.log 1g
 sdc_log_rotation_setup_end
 
 # All done, run boilerplate end-of-setup
