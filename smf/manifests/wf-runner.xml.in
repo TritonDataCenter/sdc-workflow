@@ -26,7 +26,7 @@
 </dependency>
 
 <exec_method type="method" name="start" exec="@@NODE@@ --abort-on-uncaught-exception @@PREFIX@@/wf-runner.js &amp;" timeout_seconds="30" />
-<exec_method type="method" name="stop" exec="@@PREFIX@@/wf-runner-quit.sh" timeout_seconds="30" />
+<exec_method type="method" name="stop" exec=":kill -INT" timeout_seconds="30" />
 
 <instance name="default" enabled="true" />
 
