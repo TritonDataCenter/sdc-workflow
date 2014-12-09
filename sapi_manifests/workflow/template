@@ -68,7 +68,9 @@
                 "restify": "restify",
                 "async": "async",
                 "sdcClients": "sdc-clients",
-                "verror": "verror"
+                "vasync": "vasync",
+                "verror": "verror",
+                "dockerRegistry": "docker-registry-client"
             },
             "ufdsUrl": "ldaps://{{{UFDS_SERVICE}}}",
             "ufdsDn": "{{{ufds_ldap_root_dn}}}",
