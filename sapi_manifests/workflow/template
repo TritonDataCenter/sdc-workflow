@@ -82,7 +82,8 @@
             "papiUrl": "http://{{{PAPI_SERVICE}}}",
             "imgapiUrl": "http://{{{IMGAPI_SERVICE}}}",
             "fwapiUrl": "http://{{{FWAPI_SERVICE}}}",
-            "wfapiUrl": "http://{{{WORKFLOW_SERVICE}}}"
+            "wfapiUrl": "http://{{{WORKFLOW_SERVICE}}}",
+            "dockerUrl": "http://docker.{{{datacenter_name}}}.{{{dns_domain}}}:2375"
         }
     }
 }
