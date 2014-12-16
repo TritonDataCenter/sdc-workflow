@@ -17,8 +17,9 @@
     "node-uuid": "1.4.0",
     "async": "0.1.22",
     "vasync": "1.6.1",
-    "sdc-clients": "git+ssh://git@github.com:joyent/node-sdc-clients.git#838364b",
-    "verror": "1.3.5"
+    "sdc-clients": "git+ssh://git@github.com:joyent/node-sdc-clients.git#a341277",
+    "verror": "1.3.5",
+    "imgmanifest": "git+ssh://git@github.com:joyent/node-imgmanifest.git#19a702f"
   },
   "devDependencies": {
     "tap": "~0.3"
