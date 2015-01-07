@@ -19,7 +19,7 @@
     "vasync": "1.6.1",
     "sdc-clients": "git+ssh://git@github.com:joyent/node-sdc-clients.git#a341277",
     "verror": "1.3.5",
-    "imgmanifest": "git+ssh://git@github.com:joyent/node-imgmanifest.git#19a702f"
+    "imgmanifest": "git+ssh://git@github.com:joyent/node-imgmanifest.git#6fa438d"
   },
   "devDependencies": {
     "tap": "~0.3"
