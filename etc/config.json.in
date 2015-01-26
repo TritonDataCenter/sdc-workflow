@@ -55,7 +55,7 @@
     "logLevel": "info",
     "maxInitRetries": 50,
     "runner": {
-        "identifier": "{{{ZONE_UUID}}}",
+        "identifier": "{{{ZONENAME}}}",
         "forks": {{{WORKFLOW_NUM_FORKS}}},
         "do_fork": false,
         "run_interval": {{{WORKFLOW_RUN_INTERVAL}}},

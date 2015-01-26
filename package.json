@@ -24,5 +24,8 @@
   "devDependencies": {
     "tap": "~0.3"
   },
+  "sdcDependencies": {
+    "config-agent": ">=1.2.0"
+  },
   "license": "MPL-2.0"
 }

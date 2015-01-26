@@ -55,7 +55,7 @@
     "maxInitRetries": 50,
     "coal": "{{{coal}}}",
     "runner": {
-        "identifier": "{{{ZONE_UUID}}}",
+        "identifier": "{{{auto.ZONENAME}}}",
         "forks": {{{WORKFLOW_NUM_FORKS}}},
         "do_fork": false,
         "run_interval": {{{WORKFLOW_RUN_INTERVAL}}},
