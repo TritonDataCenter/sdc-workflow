@@ -71,7 +71,8 @@
                 "vasync": "vasync",
                 "verror": "verror",
                 "dockerRegistry": "docker-registry-client",
-                "imgmanifest": "imgmanifest"
+                "imgmanifest": "imgmanifest",
+                "lstream": "lstream"
             },
             "ufdsUrl": "ldaps://{{{UFDS_SERVICE}}}",
             "ufdsDn": "{{{ufds_ldap_root_dn}}}",
