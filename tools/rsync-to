@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+#
+
+#
+# Copyright (c) 2015, Joyent, Inc.
+#
+
+#
+# Rsync the master in this working copy to the install on the given HN.
+#
+
+#set -o xtrace
+set -o errexit
+
+TOP=$(cd $(dirname $0)/../; pwd)
+NODE=$1
+
+if [[ -z "$ZONE" ]]; then
+    ZONE=$(ssh $NODE "/opt/smartdc/bin/sdc-vmapi /vms" 2>/dev/null \
+        | json -H -c 'this.tags && this.tags.smartdc_role === "workflow"' \
+            -c 'this.state === "running"' 0.uuid)
+fi
+echo "ZONE: $ZONE"
+
+extraOpts=
+if [[ $(uname -s) != "SunOS" ]]; then
+    extraOpts="--exclude *.node --exclude build"
+else
+    # Clean node_modules everytime.
+    ssh $NODE rm -rf /zones/$ZONE/root/opt/smartdc/workflow/node_modules
+fi
+
+rsync -av ${TOP}/ \
+    $NODE:/zones/$ZONE/root/opt/smartdc/workflow/ \
+    $extraOpts \
+    --exclude .git/ \
+    --exclude /deps/ \
+    --exclude /doc/ \
+    --exclude /tools/ \
+    --exclude /tmp/
+
+for SVC in wf-api wf-runner; do
+    state=$(ssh ${NODE} svcs -z ${ZONE} -H -o state ${SVC})
+    if [[ "$state" == "maintenance" ]]; then
+        ssh ${NODE} svcadm -z ${ZONE} clear ${SVC}
+    else
+        ssh ${NODE} svcadm -z ${ZONE} restart ${SVC}
+    fi
+done
+ssh ${NODE} svcadm -z ${ZONE} restart config-agent
