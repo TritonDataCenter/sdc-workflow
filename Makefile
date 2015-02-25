@@ -106,7 +106,6 @@ release: build docs
 		$(ROOT)/wf-backfill.js \
 		$(ROOT)/node_modules \
 		$(ROOT)/package.json \
-		$(ROOT)/npm-shrinkwrap.json \
 		$(ROOT)/sapi_manifests \
 		$(ROOT)/smf \
 		$(RELSTAGEDIR)/root/opt/smartdc/workflow/
