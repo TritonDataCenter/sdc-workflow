@@ -54,6 +54,9 @@
     "logLevel": "info",
     "maxInitRetries": 50,
     "coal": "{{{coal}}}",
+{{#experimental_fluentd_host}}
+    "fluentd_host": "{{{experimental_fluentd_host}}}",
+{{/experimental_fluentd_host}}
     "runner": {
         "identifier": "{{{auto.ZONENAME}}}",
         "forks": {{{WORKFLOW_NUM_FORKS}}},
