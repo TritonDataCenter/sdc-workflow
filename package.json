@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "wf-moray-backend": "git+ssh://git@github.com:joyent/node-workflow-moray-backend.git#6a2e68f",
-    "wf": "git://github.com/kusor/node-workflow.git#cdec003",
+    "wf": "git://github.com/kusor/node-workflow.git#92aa0248",
     "bunyan": "1.3.4",
     "docker-registry-client": "git+ssh://git@github.com:joyent/node-docker-registry-client.git#d64002e",
     "effluent-logger": "git+https://github.com/joshwilsdon/effluent-logger.git#d662f161a07f94045ad2afb45442931511c40e51",
