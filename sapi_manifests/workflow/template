@@ -73,7 +73,6 @@
                 "sdcClients": "sdc-clients",
                 "vasync": "vasync",
                 "verror": "verror",
-                "dockerRegistry": "docker-registry-client",
                 "imgmanifest": "imgmanifest",
                 "lstream": "lstream"
             },
