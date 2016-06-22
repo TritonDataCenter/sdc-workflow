@@ -17,7 +17,7 @@
     "uuid": "3.0.1",
     "async": "0.1.22",
     "vasync": "1.6.4",
-    "sdc-clients": "10.2.0",
+    "sdc-clients": "git+https://github.com/joyent/node-sdc-clients.git#1457c7c8cd08e11aefe4ef7142207c827e8fe967",
     "verror": "1.6.0",
     "imgmanifest": "git+https://github.com/joyent/node-imgmanifest.git#e21ea53",
     "lstream": "0.0.4"
