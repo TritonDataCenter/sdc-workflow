@@ -6,20 +6,20 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:joyent/sdc-workflow.git"
+    "url": "git+https://github.com/joyent/sdc-workflow.git"
   },
   "dependencies": {
-    "wf-moray-backend": "git://github.com/joyent/node-workflow-moray-backend.git#376532",
-    "wf": "git://github.com/joyent/node-workflow.git#cac32eec0fa906adeba683f7f9436a9247740f11",
+    "wf-moray-backend": "git+https://github.com/joyent/node-workflow-moray-backend.git#376532",
+    "wf": "git+https://github.com/joyent/node-workflow.git#cac32eec0fa906adeba683f7f9436a9247740f11",
     "bunyan": "1.3.4",
     "effluent-logger": "git+https://github.com/joshwilsdon/effluent-logger.git#d662f161a07f94045ad2afb45442931511c40e51",
     "restify": "2.6.1",
     "node-uuid": "1.4.0",
     "async": "0.1.22",
     "vasync": "1.6.1",
-    "sdc-clients": "git+ssh://git@github.com:joyent/node-sdc-clients.git#06e4b180ff74b708096e3c4449e628332eb75047",
+    "sdc-clients": "git+https://github.com/joyent/node-sdc-clients.git#06e4b180ff74b708096e3c4449e628332eb75047",
     "verror": "1.3.5",
-    "imgmanifest": "git+ssh://git@github.com:joyent/node-imgmanifest.git#e21ea53",
+    "imgmanifest": "git+https://github.com/joyent/node-imgmanifest.git#e21ea53",
     "lstream": "0.0.4"
   },
   "devDependencies": {
