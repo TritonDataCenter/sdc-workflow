@@ -15,11 +15,12 @@
     "imgmanifest": "3.1.0",
     "lstream": "0.0.4",
     "restify": "4.1.1",
-    "sdc-clients": "11.3.1",
+    "restify-clients": "git+https://github.com/joshwilsdon/restify-clients.git#rfd-35-cls",
+    "sdc-clients": "git+https://github.com/joyent/node-sdc-clients.git#rfd-35-cls",
     "uuid": "3.0.1",
     "vasync": "1.6.4",
     "verror": "1.6.0",
-    "wf": "1.2.2",
+    "wf": "git+https://github.com/joyent/node-workflow.git#rfd-35-cls",
     "wf-moray-backend": "1.3.0"
   },
   "devDependencies": {

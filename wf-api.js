@@ -5,11 +5,11 @@
  */
 
 /*
- * Copyright (c) 2014, Joyent, Inc.
+ * Copyright (c) 2016, Joyent, Inc.
  */
 
 var path = require('path'),
-    EffluentLogger = require('effluent-logger'),
+    bunyan = require('bunyan'),
     fs = require('fs'),
     util = require('util'),
     http = require('http'),
@@ -21,21 +21,6 @@ var path = require('path'),
     log,
     retries = 0,
     MAX_RETRIES;
-
-
-function addFluentdHost(log, host) {
-    var evtLogger = new EffluentLogger({
-        filter: function _evtFilter(obj) { return (!!obj.evt); },
-        host: host,
-        log: log,
-        port: 24224,
-        tag: 'debug'
-    });
-    log.addStream({
-        stream: evtLogger,
-        type: 'raw'
-    });
-}
 
 
 fs.readFile(config_file, 'utf8', function (err, data) {
@@ -58,12 +43,18 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             https.globalAgent.maxSockets = config.maxHttpSockets;
         }
 
-        config.logger = {
-            streams: [ {
+        config.log = new bunyan({
+            name: 'workflow-api',
+            serializers: restify.bunyan.serializers,
+            streams: [{
                 level: config.logLevel || 'info',
                 stream: process.stdout
             }]
-        };
+        });
+
+        tritonTracer.init({
+            log: config.log
+        });
 
         config.metrics = {
             datacenterName: config.datacenterName,
@@ -75,11 +66,6 @@ fs.readFile(config_file, 'utf8', function (err, data) {
 
         api = wf.API(config);
         log = api.log;
-
-        // EXPERIMENTAL
-        if (config.fluentd_host) {
-            addFluentdHost(log, config.fluentd_host);
-        }
 
         var init = function (cb) {
             api.init(function onInit() {
