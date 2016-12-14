@@ -5,7 +5,7 @@
  */
 
 /*
- * Copyright (c) 2015, Joyent, Inc.
+ * Copyright (c) 2016, Joyent, Inc.
  */
 
 var path = require('path'),
@@ -13,6 +13,7 @@ var path = require('path'),
     util = require('util'),
     http = require('http'),
     https = require('https'),
+    tritonTracer = require('triton-tracer'),
     wf = require('wf'),
     config_file = path.resolve(__dirname, 'etc/config.json'),
     config,
@@ -44,12 +45,18 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             https.globalAgent.maxSockets = config.maxHttpSockets;
         }
 
-        config.logger = {
-            streams: [ {
+        config.log = new bunyan({
+            name: 'workflow-runner',
+            serializers: restify.bunyan.serializers,
+            streams: [{
                 level: config.logLevel || 'info',
                 stream: process.stdout
             }]
-        };
+        });
+
+        tritonTracer.init({
+            log: config.log
+        });
 
         config.metrics = {
             datacenterName: config.datacenterName,
