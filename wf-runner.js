@@ -9,6 +9,7 @@
  */
 
 var path = require('path'),
+    bunyan = require('bunyan'),
     fs = require('fs'),
     util = require('util'),
     http = require('http'),
@@ -47,7 +48,6 @@ fs.readFile(config_file, 'utf8', function (err, data) {
 
         config.log = new bunyan({
             name: 'workflow-runner',
-            serializers: restify.bunyan.serializers,
             streams: [{
                 level: config.logLevel || 'info',
                 stream: process.stdout
