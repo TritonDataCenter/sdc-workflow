@@ -2,7 +2,12 @@
     "backend": {
         "module": "wf-moray-backend",
         "opts": {
-            "url": "http://{{{MORAY_SERVICE}}}:2020",
+            "moray": {
+                "srvDomain": "{{{MORAY_SERVICE}}}",
+                "cueballOptions": {
+                    "resolvers": [ "{{{BINDER_SERVICE}}}" ]
+                }
+            },
             "extra_fields": {
                 "wf_workflows": {},
                 "wf_jobs": {
