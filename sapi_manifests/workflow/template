@@ -72,7 +72,7 @@
             "modules": {
                 "urlModule": "url",
                 "http": "http",
-                "uuid": "node-uuid",
+                "uuid": "uuid",
                 "restify": "restify",
                 "async": "async",
                 "sdcClients": "sdc-clients",
