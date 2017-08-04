@@ -83,13 +83,8 @@
                 "jsprim": "jsprim"
             },
             "ufdsUrl": "ldaps://{{{UFDS_SERVICE}}}",
-{{#experimental_nfs_shared_volumes}}
             "volapiUrl": "http://volapi.{{{datacenter_name}}}.{{{dns_domain}}}",
-{{/experimental_nfs_shared_volumes}}
             "ufdsDn": "{{{ufds_ldap_root_dn}}}",
-{{#experimental_nfs_shared_volumes}}
-    "experimentalNfsSharedVolumes": {{{experimental_nfs_shared_volumes}}},
-{{/experimental_nfs_shared_volumes}}
             "ufdsPassword": "{{{ufds_ldap_root_pw}}}",
             "dapiUrl": "http://{{{DAPI_SERVICE}}}",
             "napiUrl": "http://{{{NAPI_SERVICE}}}",
