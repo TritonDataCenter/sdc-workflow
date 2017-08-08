@@ -79,8 +79,7 @@
                 "vasync": "vasync",
                 "verror": "verror",
                 "imgmanifest": "imgmanifest",
-                "lstream": "lstream",
-                "jsprim": "jsprim"
+                "lstream": "lstream"
             },
             "ufdsUrl": "ldaps://{{{UFDS_SERVICE}}}",
 {{#experimental_nfs_shared_volumes}}
