@@ -48,10 +48,10 @@ fs.readFile(config_file, 'utf8', function (err, data) {
         config.log = new bunyan({
             name: 'workflow-api',
             serializers: restify.bunyan.serializers,
-            streams: [{
+            streams: [ {
                 level: config.logLevel || 'info',
                 stream: process.stdout
-            }]
+            } ]
         });
 
         tritonTracer.init({
