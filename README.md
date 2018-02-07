@@ -69,3 +69,4 @@ Available objects on the REPL session, apart of the default node globals are:
 
 Additionally, `backend` provides access to `moray-client` at `backend.client`, so you
 can directly talk REST to `moray`. Look at `moray-client` module setup above `wf-moray-backend`.
+
