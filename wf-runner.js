@@ -66,6 +66,14 @@ fs.readFile(config_file, 'utf8', function (err, data) {
             }]
         };
 
+        config.metrics = {
+            datacenterName: config.datacenterName,
+            serviceName: config.serviceName,
+            instanceUuid: config.instanceUuid,
+            serverUuid: config.serverUuid,
+            adminIp: config.adminIp
+        };
+
         MAX_RETRIES = config.maxInitRetries || 10;
 
         // Poll less frequently in COAL:

@@ -1,4 +1,9 @@
 {
+    "datacenterName": "{{{datacenter_name}}}",
+    "serviceName": "{{SERVICE_NAME}}",
+    "instanceUuid": "{{auto.ZONENAME}}",
+    "serverUuid": "{{auto.SERVER_UUID}}",
+    "adminIp": "{{auto.ADMIN_IP}}",
     "backend": {
         "module": "wf-moray-backend",
         "opts": {

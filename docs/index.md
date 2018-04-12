@@ -334,3 +334,7 @@ For example:
           "name": "provision-7.0.2",
           "execution": "succeeded"
         }
+
+## Metrics
+
+Workflow exposes metrics via [node-triton-metrics](https://github.com/joyent/node-triton-metrics). wf-runner metrics are exposed  on `http://<ADMIN_IP>:8881/metrics` and wf-api metrics are exposed on 'http://<ADMIN_IP>:8882/metrics`.
