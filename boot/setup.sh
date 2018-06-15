@@ -7,7 +7,7 @@
 #
 
 #
-# Copyright (c) 2014, Joyent, Inc.
+# Copyright (c) 2018, Joyent, Inc.
 #
 
 export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
@@ -51,6 +51,9 @@ sdc_log_rotation_add wf-api /var/svc/log/*wf-api*.log 1g
 sdc_log_rotation_add wf-runner /var/svc/log/*wf-runner*.log 1g
 sdc_log_rotation_add wf-backfill /var/svc/log/*wf-backfill*.log 1g
 sdc_log_rotation_setup_end
+
+# Add metadata for cmon-agent discovery
+mdata-put metricPorts 8881,8882
 
 # All done, run boilerplate end-of-setup
 sdc_setup_complete
