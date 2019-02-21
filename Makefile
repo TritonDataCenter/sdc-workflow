@@ -5,7 +5,7 @@
 #
 
 #
-# Copyright (c) 2015, Joyent, Inc.
+# Copyright (c) 2019, Joyent, Inc.
 #
 
 #
@@ -56,23 +56,28 @@ ifeq ($(shell uname -s),SunOS)
 	NODE_PREBUILT_IMAGE=18b094b0-eb01-11e5-80c1-175dac7ddf02
 endif
 
-include ./tools/mk/Makefile.defs
+ENGBLD_USE_BUILDIMAGE	= true
+ENGBLD_REQUIRE		:= $(shell git submodule update --init deps/eng)
+include ./deps/eng/tools/mk/Makefile.defs
+TOP ?= $(error Unable to access eng.git submodule Makefiles.)
+
 ifeq ($(shell uname -s),SunOS)
-	include ./tools/mk/Makefile.node_prebuilt.defs
+	include ./deps/eng/tools/mk/Makefile.node_prebuilt.defs
+	include ./deps/eng/tools/mk/Makefile.agent_prebuilt.defs
 else
 	NPM := $(shell which npm)
 	NPM_EXEC=$(NPM)
 endif
-include ./tools/mk/Makefile.smf.defs
+include ./deps/eng/tools/mk/Makefile.smf.defs
 
 #
 # Repo-specific targets
 #
 .PHONY: all
-all: build sdc-scripts
+all: build
 
 .PHONY: build
-build: $(SMF_MANIFESTS) | $(TAP) $(REPO_DEPS)
+build: $(SMF_MANIFESTS) | $(TAP) sdc-scripts
 	$(NPM) install
 
 $(TAP): | $(NPM_EXEC)
@@ -82,8 +87,14 @@ CLEAN_FILES += $(TAP) ./node_modules/tap
 
 
 ROOT                    := $(shell pwd)
-RELEASE_TARBALL         := $(NAME)-pkg-$(STAMP).tar.bz2
-RELSTAGEDIR             := /tmp/$(STAMP)
+RELEASE_TARBALL         := $(NAME)-pkg-$(STAMP).tar.gz
+RELSTAGEDIR             := /tmp/$(NAME)-$(STAMP)
+
+BASE_IMAGE_UUID = 04a48d7d-6bb5-4e83-8c3b-e60a99e0f48f
+BUILDIMAGE_NAME = $(NAME)
+BUILDIMAGE_DESC	= SDC Workflow
+BUILDIMAGE_PKGSRC = apg-2.3.0bnb3
+AGENTS		= amon config registrar
 
 .PHONY: setup
 setup: | $(NPM_EXEC)
@@ -96,7 +107,7 @@ release: build docs
 	@mkdir -p $(RELSTAGEDIR)/site
 	@touch $(RELSTAGEDIR)/site/.do-not-delete-me
 	@mkdir -p $(RELSTAGEDIR)/root
-	@mkdir -p $(tmpdir)/root/opt/smartdc/workflow/ssl
+	@mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/workflow/ssl
 	cp -r   $(ROOT)/build \
 		$(ROOT)/etc \
 		$(ROOT)/lib \
@@ -112,25 +123,22 @@ release: build docs
 	mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/boot
 	cp -R $(ROOT)/deps/sdc-scripts/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
 	cp -R $(ROOT)/boot/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
-	(cd $(RELSTAGEDIR) && $(TAR) -jcf $(ROOT)/$(RELEASE_TARBALL) root site)
+	(cd $(RELSTAGEDIR) && $(TAR) -I pigz -cf $(ROOT)/$(RELEASE_TARBALL) root site)
 	@rm -rf $(RELSTAGEDIR)
 
 
 .PHONY: publish
 publish: release
-	@if [[ -z "$(BITS_DIR)" ]]; then \
-		echo "error: 'BITS_DIR' must be set for 'publish' target"; \
-		exit 1; \
-	fi
-	mkdir -p $(BITS_DIR)/$(NAME)
-	cp $(ROOT)/$(RELEASE_TARBALL) $(BITS_DIR)/$(NAME)/$(RELEASE_TARBALL)
+	mkdir -p $(ENGBLD_BITS_DIR)/$(NAME)
+	cp $(ROOT)/$(RELEASE_TARBALL) $(ENGBLD_BITS_DIR)/$(NAME)/$(RELEASE_TARBALL)
 
 
-include ./tools/mk/Makefile.deps
+include ./deps/eng/tools/mk/Makefile.deps
 ifeq ($(shell uname -s),SunOS)
-	include ./tools/mk/Makefile.node_prebuilt.targ
+	include ./deps/eng/tools/mk/Makefile.node_prebuilt.targ
+	include ./deps/eng/tools/mk/Makefile.agent_prebuilt.targ
 endif
-include ./tools/mk/Makefile.smf.targ
-include ./tools/mk/Makefile.targ
+include ./deps/eng/tools/mk/Makefile.smf.targ
+include ./deps/eng/tools/mk/Makefile.targ
 
 sdc-scripts: deps/sdc-scripts/.git

@@ -1,5 +1,7 @@
+/make_stamps
 /node_modules
 /tmp
+bits
 build
 docs/*.json
 docs/*.html
@@ -9,3 +11,4 @@ cscope.out
 smf/manifests/wf-*.xml
 *.vim
 etc/*.json
+workflow-pkg-*.tar.gz
