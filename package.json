@@ -19,7 +19,7 @@
     "uuid": "3.0.1",
     "vasync": "1.6.4",
     "verror": "1.6.0",
-    "wf": "git+https://github.com/joyent/node-workflow.git#fcbd66058d290fa8284a25bda854ff8743478b4f",
+    "wf": "1.2.2",
     "wf-moray-backend": "1.2.0"
   },
   "devDependencies": {
