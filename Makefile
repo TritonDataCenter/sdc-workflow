@@ -108,8 +108,7 @@ release: build docs
 	@touch $(RELSTAGEDIR)/site/.do-not-delete-me
 	@mkdir -p $(RELSTAGEDIR)/root
 	@mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/workflow/ssl
-	cp -r   $(ROOT)/build \
-		$(ROOT)/etc \
+	cp -r $(ROOT)/etc \
 		$(ROOT)/lib \
 		$(ROOT)/wf-api.js \
 		$(ROOT)/wf-runner.js \
@@ -123,6 +122,27 @@ release: build docs
 	mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/boot
 	cp -R $(ROOT)/deps/sdc-scripts/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
 	cp -R $(ROOT)/boot/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
+	# Copy the node build, then trim out the bits we don't need.
+	mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/build
+	cp -PR \
+		$(ROOT)/build/node \
+		$(ROOT)/build/docs \
+		$(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/build
+	# Trim node
+	rm -rf \
+		$(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/build/node/bin/npm \
+		$(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/build/node/lib/node_modules \
+		$(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/build/node/include \
+		$(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/build/node/share
+	# Trim node_modules (this is death of a 1000 cuts, try for some
+	# easy wins).
+	find $(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/node_modules -name test | xargs -n1 rm -rf
+	find $(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/node_modules -name tests | xargs -n1 rm -rf
+	find $(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/node_modules -name examples | xargs -n1 rm -rf
+	find $(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/node_modules -name "draft-*" | xargs -n1 rm -rf  # draft xml stuff in json-schema
+	find $(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/node_modules -name libusdt | xargs -n1 rm -rf  # dtrace-provider
+	find $(RELSTAGEDIR)/root/opt/smartdc/$(NAME)/node_modules -name obj.target | xargs -n1 rm -rf  # dtrace-provider
+	# Create the release tarball.
 	(cd $(RELSTAGEDIR) && $(TAR) -I pigz -cf $(ROOT)/$(RELEASE_TARBALL) root site)
 	@rm -rf $(RELSTAGEDIR)
 
