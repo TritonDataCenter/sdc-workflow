@@ -5,7 +5,7 @@
 -->
 
 <!--
-    Copyright 2019 Joyent, Inc.
+    Copyright 2020 Joyent, Inc.
 -->
 
 # sdc-workflow
@@ -43,7 +43,36 @@ using `bunyan -p` to get more verbose logging for each of the processes:
     bunyan -p wf-api
     bunyan -p wf-runner
 
-## Inspecting moray backend from the command line
+## Moray
+
+### Moray notifications
+
+The moray workflow backend will sent a moray notification for each job status
+change (once it's started running). Example notification:
+
+    {
+        channel: 'workflow_job_status_changed',
+        payload: 'String, see the example payload below',
+    }
+
+Payload (JSON.parse() of the payload string):
+
+    {
+        uuid: 'e3d9b2d9-ee39-4fa8-bb0f-0ff9b687315f',
+        name: 'start-7.0.8',
+        execution: 'succeeded',
+        prevExecution: null,
+        lastResult:
+        {
+            result: 'OK',
+            error: '',
+            name: 'cnapi.release_vm_ticket',
+            started_at: '2020-06-24T20:22:19.523Z',
+            finished_at: '2020-06-24T20:22:19.752Z'
+        }
+    }
+
+### Inspecting moray backend from the command line
 
 Besides the default services, an additional `wf-console.js` script is provided,
 which can be initialized and used to directly talk to the moray backend the same
