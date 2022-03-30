@@ -1,7 +1,7 @@
 {
   "name": "workflow",
   "description": "SmartDataCenter Workflow API and Runners",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Joyent (joyent.com)",
   "private": true,
   "repository": {
@@ -11,7 +11,7 @@
   "dependencies": {
     "async": "0.1.22",
     "bunyan": "1.8.1",
-    "effluent-logger": "git+https://github.com/joshwilsdon/effluent-logger.git#d662f161a07f94045ad2afb45442931511c40e51",
+    "effluent-logger": "git+https://github.com/joyent/effluent-logger.git#d662f161a07f94045ad2afb45442931511c40e51",
     "imgmanifest": "3.1.0",
     "lstream": "0.0.4",
     "restify": "4.1.1",
@@ -20,7 +20,7 @@
     "vasync": "1.6.4",
     "verror": "1.6.0",
     "wf": "1.2.2",
-    "wf-moray-backend": "1.3.0"
+    "wf-moray-backend": "git+https://github.com/joyent/node-workflow-moray-backend.git#f9653fd"
   },
   "devDependencies": {
     "tap": "~0.3"
