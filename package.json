@@ -20,7 +20,7 @@
     "vasync": "1.6.4",
     "verror": "1.6.0",
     "wf": "1.2.2",
-    "wf-moray-backend": "git+https://github.com/joyent/node-workflow-moray-backend.git#f9653fd"
+    "wf-moray-backend": "1.3.2"
   },
   "devDependencies": {
     "tap": "~0.3"
