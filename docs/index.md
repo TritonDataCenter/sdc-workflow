@@ -22,9 +22,9 @@ build and setup workflow zones either into SDC Headnode or Compute Nodes.
 
 Please, note this documentation is not about the general purpose `wf` and backend modules.
 Documentation for these is publicly available at
-[Terminology and system description](http://kusor.github.io/node-workflow/ "This includes how wf-runners work")
+[Terminology and system description](http://TritonDataCenter.github.io/node-workflow/ "This includes how wf-runners work")
 and the
-[Workflow REST API](http://kusor.github.io/node-workflow/workflowapi.html).
+[Workflow REST API](http://TritonDataCenter.github.io/node-workflow/workflowapi.html).
 
 A copy of such documents is also available on this server for convenience:
 

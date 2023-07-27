@@ -2,7 +2,7 @@
   "name": "workflow",
   "description": "Triton Workflow API and Runners",
   "version": "1.4.2",
-  "author": "MNX Cloud (mnx.ia)",
+  "author": "MNX Cloud (mnx.io)",
   "private": true,
   "repository": {
     "type": "git",
