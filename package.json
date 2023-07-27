@@ -1,17 +1,17 @@
 {
   "name": "workflow",
-  "description": "SmartDataCenter Workflow API and Runners",
-  "version": "1.4.1",
-  "author": "Joyent (joyent.com)",
+  "description": "Triton Workflow API and Runners",
+  "version": "1.4.2",
+  "author": "MNX Cloud (mnx.ia)",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joyent/sdc-workflow.git"
+    "url": "git+https://github.com/TritonDataCenter/sdc-workflow.git"
   },
   "dependencies": {
     "async": "0.1.22",
     "bunyan": "1.8.1",
-    "effluent-logger": "git+https://github.com/joyent/effluent-logger.git#d662f161a07f94045ad2afb45442931511c40e51",
+    "effluent-logger": "git+https://github.com/TritonDataCenter/effluent-logger.git#d662f161a07f94045ad2afb45442931511c40e51",
     "imgmanifest": "3.1.0",
     "lstream": "0.0.4",
     "restify": "4.1.1",
