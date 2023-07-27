@@ -6,14 +6,16 @@
 
 <!--
     Copyright 2020 Joyent, Inc.
+    Copyright 2023 MNX Cloud, Inc.
 -->
 
 # sdc-workflow
 
 This repository is part of the Joyent Triton project. See the [contribution
-guidelines](https://github.com/joyent/triton/blob/master/CONTRIBUTING.md)
-and general documentation at the main
-[Triton project](https://github.com/joyent/triton) page.
+guidelines][cg] and general documentation at the main
+[Triton project](https://github.com/TritonDataCenter/triton) page.
+
+[cg]: https://github.com/TritonDataCenter/triton/blob/master/CONTRIBUTING.md
 
 ## Overview
 

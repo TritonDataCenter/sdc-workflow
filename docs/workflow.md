@@ -10,6 +10,7 @@ logo-color: #aa0000
 
 <!--
     Copyright (c) 2014, Joyent, Inc.
+    Copyright 2023 MNX Cloud, Inc.
 -->
 
 # Overview
@@ -437,14 +438,14 @@ The following is an example configuration for node-workflow, with all the
 relevant sections included:
 
 
-    { 
+    {
       "backend": {
         "module": "../lib/workflow-redis-backend",
         "opts": {
           "port": 6379,
           "host": "127.0.0.1",
-          "db": 14 
-        } 
+          "db": 14
+        }
       },
       "api": {
         "port": 8080
@@ -472,7 +473,7 @@ relevant sections included:
           "level": "debug",
           "path": "./some-file.log"
         }]
-      } 
+      }
     }
 
 
@@ -524,7 +525,7 @@ required.
   associated jobs will be canceled. The default `run_interval` is 250 milliseconds
   after the previous execution.
 - `sandbox`: any variables and node.js modules we want to make available for the
-  VM where we run our tasks. The key for each member will be the identifier for 
+  VM where we run our tasks. The key for each member will be the identifier for
   referring to each object inside a task's `body` and `fallback` functions,
   while the value is what the system will use to require the module.
   For example: `{uuid: 'node-uuid'}`.
@@ -542,7 +543,7 @@ used by both `Runners` and `REST API`.
 The [workflow-example](https://github.com/kusor/node-workflow-example)
 repository contains everything needed to illustrate:
 
-- An example config file `config.json.sample` which should be renamed to 
+- An example config file `config.json.sample` which should be renamed to
   `config.json`, and modified to properly match your local environment.
 
 Remember that, in order to process any `job` the `workflow-runner` needs to be
@@ -589,4 +590,4 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-<style>#forkongithub a{background:#600;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#000;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/kusor/node-workflow">Fork me on GitHub</a></span>
+<style>#forkongithub a{background:#600;color:#fff;text-decoration:none;font-family:arial, sans-serif;text-align:center;font-weight:bold;padding:5px 40px;font-size:1rem;line-height:2rem;position:relative;transition:0.5s;}#forkongithub a:hover{background:#000;color:#fff;}#forkongithub a::before,#forkongithub a::after{content:"";width:100%;display:block;position:absolute;top:1px;left:0;height:1px;background:#fff;}#forkongithub a::after{bottom:1px;top:auto;}@media screen and (min-width:800px){#forkongithub{position:absolute;display:block;top:0;right:0;width:200px;overflow:hidden;height:200px;}#forkongithub a{width:200px;position:absolute;top:60px;right:-60px;transform:rotate(45deg);-webkit-transform:rotate(45deg);box-shadow:4px 4px 10px rgba(0,0,0,0.8);}}</style><span id="forkongithub"><a href="https://github.com/TritonDataCenter/node-workflow">Fork me on GitHub</a></span>

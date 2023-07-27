@@ -6,6 +6,7 @@
 
 #
 # Copyright 2021 Joyent, Inc.
+# Copyright 2023 MNX Cloud, Inc.
 #
 
 #
@@ -42,24 +43,25 @@ DOC_FILES	 = index.md api.md workflow.md
 EXTRA_DOC_DEPS += deps/restdown-brand-remora/.git
 RESTDOWN_FLAGS   = --brand-dir=deps/restdown-brand-remora
 JS_FILES	:= $(shell ls *.js) $(shell find lib -name '*.js')
-JSL_CONF_NODE	 = tools/jsl.node.conf
-JSL_FILES_NODE   = $(JS_FILES)
+ESLINT_FILES     = $(JS_FILES)
 JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -o indent=4,doxygen,unparenthesized-return=0
 SMF_MANIFESTS_IN = smf/manifests/wf-api.xml.in smf/manifests/wf-runner.xml.in smf/manifests/wf-backfill.xml.in
 
-NODE_PREBUILT_VERSION=v4.9.0
+NODE_PREBUILT_VERSION=v6.17.1
 
 ifeq ($(shell uname -s),SunOS)
-	NODE_PREBUILT_TAG=zone
-	# Allow building on other than image sdc-minimal-multiarch-lts@15.4.1.
-	NODE_PREBUILT_IMAGE=18b094b0-eb01-11e5-80c1-175dac7ddf02
+	NODE_PREBUILT_TAG=zone64
+	# minimal-64-lts@21.4.0
+	NODE_PREBUILT_IMAGE = a7199134-7e94-11ec-be67-db6f482136c2
 endif
 
 ENGBLD_USE_BUILDIMAGE	= true
 ENGBLD_REQUIRE		:= $(shell git submodule update --init deps/eng)
 include ./deps/eng/tools/mk/Makefile.defs
 TOP ?= $(error Unable to access eng.git submodule Makefiles.)
+
+BUILD_PLATFORM  = 20210826T002459Z
 
 ifeq ($(shell uname -s),SunOS)
 	include ./deps/eng/tools/mk/Makefile.node_prebuilt.defs
@@ -90,11 +92,11 @@ ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := $(NAME)-pkg-$(STAMP).tar.gz
 RELSTAGEDIR             := /tmp/$(NAME)-$(STAMP)
 
-BASE_IMAGE_UUID = 04a48d7d-6bb5-4e83-8c3b-e60a99e0f48f
+BASE_IMAGE_UUID = 502eeef2-8267-489f-b19c-a206906f57ef
 BUILDIMAGE_NAME = $(NAME)
-BUILDIMAGE_DESC	= SDC Workflow
+BUILDIMAGE_DESC	= Triton Workflow
 BUILDIMAGE_DO_PKGSRC_UPGRADE = true
-BUILDIMAGE_PKGSRC = apg-2.3.0bnb3
+BUILDIMAGE_PKGSRC = apg-2.3.0bnb10
 AGENTS		= amon config registrar
 
 .PHONY: setup
