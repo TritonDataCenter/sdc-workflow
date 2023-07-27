@@ -92,9 +92,9 @@ ROOT                    := $(shell pwd)
 RELEASE_TARBALL         := $(NAME)-pkg-$(STAMP).tar.gz
 RELSTAGEDIR             := /tmp/$(NAME)-$(STAMP)
 
-BASE_IMAGE_UUID = 04a48d7d-6bb5-4e83-8c3b-e60a99e0f48f
+BASE_IMAGE_UUID = 502eeef2-8267-489f-b19c-a206906f57ef
 BUILDIMAGE_NAME = $(NAME)
-BUILDIMAGE_DESC	= SDC Workflow
+BUILDIMAGE_DESC	= Triton Workflow
 BUILDIMAGE_DO_PKGSRC_UPGRADE = true
 BUILDIMAGE_PKGSRC = apg-2.3.0bnb10
 AGENTS		= amon config registrar
